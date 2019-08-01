@@ -323,3 +323,85 @@ $factory->define(App\Village::class, function (Faker $faker) {
         },
     ];
 });
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Category::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Convention::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Courrier::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'date' => $faker->dateTime(),
+        'details' => $faker->word,
+        'gestionnaires_id' => function () {
+            return factory(App\Gestionnaire::class)->create()->id;
+        },
+        'users_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Detf::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Employee::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'matricule' => $faker->word,
+        'cin' => $faker->word,
+        'users_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'quartier_id' => function () {
+            return factory(App\Quartier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Quartier::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'nom' => $faker->word,
+        'chef_id' => $faker->randomNumber(),
+        'communes_id' => function () {
+            return factory(App\Commune::class)->create()->id;
+        },
+    ];
+});

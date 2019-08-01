@@ -26,6 +26,8 @@ class CreateBeneficiairesTable extends Migration
             $table->char('uuid', 36);
             $table->string('matricule', 200);
             $table->string('cin', 20);
+            $table->dateTime('date')->nullable();
+            $table->string('lieu', 200)->nullable();
             $table->unsignedInteger('village_id')->nullable();
             $table->unsignedInteger('gestionnaires_id')->nullable();
             $table->unsignedInteger('users_id')->nullable();

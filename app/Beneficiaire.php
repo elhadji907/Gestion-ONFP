@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 31 Jul 2019 16:02:50 +0000.
+ * Date: Thu, 01 Aug 2019 09:51:34 +0000.
  */
 
 namespace App;
@@ -16,6 +16,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $uuid
  * @property string $matricule
  * @property string $cin
+ * @property \Carbon\Carbon $date
+ * @property string $lieu
  * @property int $village_id
  * @property int $gestionnaires_id
  * @property int $users_id
@@ -40,10 +42,16 @@ class Beneficiaire extends Eloquent
 		'users_id' => 'int'
 	];
 
+	protected $dates = [
+		'date'
+	];
+
 	protected $fillable = [
 		'uuid',
 		'matricule',
 		'cin',
+		'date',
+		'lieu',
 		'village_id',
 		'gestionnaires_id',
 		'users_id'

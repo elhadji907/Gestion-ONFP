@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 31 Jul 2019 16:40:19 +0000.
+ * Date: Thu, 01 Aug 2019 09:56:08 +0000.
  */
 
 namespace App;
@@ -11,7 +11,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * Class User
  * 
@@ -34,6 +33,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Database\Eloquent\Collection $agents
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  * @property \Illuminate\Database\Eloquent\Collection $comptables
+ * @property \Illuminate\Database\Eloquent\Collection $courriers
+ * @property \Illuminate\Database\Eloquent\Collection $employees
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
  *
  * @package App
@@ -45,13 +46,12 @@ class User extends Authenticatable
 	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
-		'email_verified_at' => 'datetime',
-		'roles_id' => 'int',
+		'roles_id' => 'int'
 	];
 
-	/* protected $dates = [
+	protected $dates = [
 		'email_verified_at'
-	]; */
+	];
 
 	protected $hidden = [
 		'password',
@@ -77,26 +77,36 @@ class User extends Authenticatable
 
 	public function administrateurs()
 	{
-		return $this->hasOne(\App\Administrateur::class, 'users_id');
+		return $this->hasMany(\App\Administrateur::class, 'users_id');
 	}
 
 	public function agents()
 	{
-		return $this->hasOne(\App\Agent::class, 'users_id');
+		return $this->hasMany(\App\Agent::class, 'users_id');
 	}
 
 	public function beneficiaires()
 	{
-		return $this->hasOne(\App\Beneficiaire::class, 'users_id');
+		return $this->hasMany(\App\Beneficiaire::class, 'users_id');
 	}
 
 	public function comptables()
 	{
-		return $this->hasOne(\App\Comptable::class, 'users_id');
+		return $this->hasMany(\App\Comptable::class, 'users_id');
+	}
+
+	public function courriers()
+	{
+		return $this->hasMany(\App\Courrier::class, 'users_id');
+	}
+
+	public function employees()
+	{
+		return $this->hasMany(\App\Employee::class, 'users_id');
 	}
 
 	public function gestionnaires()
 	{
-		return $this->hasOne(\App\Gestionnaire::class, 'users_id');
+		return $this->hasMany(\App\Gestionnaire::class, 'users_id');
 	}
 }

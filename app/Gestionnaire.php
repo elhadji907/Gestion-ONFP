@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 31 Jul 2019 16:02:50 +0000.
+ * Date: Thu, 01 Aug 2019 09:51:34 +0000.
  */
 
 namespace App;
@@ -23,6 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \App\User $user
  * @property \Illuminate\Database\Eloquent\Collection $agrements
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
+ * @property \Illuminate\Database\Eloquent\Collection $courriers
  *
  * @package App
  */
@@ -53,5 +54,10 @@ class Gestionnaire extends Eloquent
 	public function beneficiaires()
 	{
 		return $this->hasMany(\App\Beneficiaire::class, 'gestionnaires_id');
+	}
+
+	public function courriers()
+	{
+		return $this->hasMany(\App\Courrier::class, 'gestionnaires_id');
 	}
 }

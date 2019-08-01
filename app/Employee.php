@@ -10,42 +10,47 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Administrateur
+ * Class Employee
  * 
  * @property int $id
  * @property string $uuid
  * @property string $matricule
+ * @property string $cin
  * @property int $users_id
+ * @property int $quartier_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
+ * @property \App\Quartier $quartier
  * @property \App\User $user
- * @property \Illuminate\Database\Eloquent\Collection $operateurs
  *
  * @package App
  */
-class Administrateur extends Eloquent
+class Employee extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'users_id' => 'int'
+		'users_id' => 'int',
+		'quartier_id' => 'int'
 	];
 
 	protected $fillable = [
 		'uuid',
 		'matricule',
-		'users_id'
+		'cin',
+		'users_id',
+		'quartier_id'
 	];
+
+	public function quartier()
+	{
+		return $this->belongsTo(\App\Quartier::class);
+	}
 
 	public function user()
 	{
 		return $this->belongsTo(\App\User::class, 'users_id');
-	}
-
-	public function operateurs()
-	{
-		return $this->hasMany(\App\Operateur::class, 'administrateurs_id');
 	}
 }

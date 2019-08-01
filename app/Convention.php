@@ -10,7 +10,7 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Role
+ * Class Convention
  * 
  * @property int $id
  * @property string $uuid
@@ -19,11 +19,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property \Illuminate\Database\Eloquent\Collection $formations
  *
  * @package App
  */
-class Role extends Eloquent
+class Convention extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -32,8 +32,8 @@ class Role extends Eloquent
 		'name'
 	];
 
-	public function users()
+	public function formations()
 	{
-		return $this->hasMany(\App\User::class, 'roles_id');
+		return $this->hasMany(\App\Formation::class, 'conventions_id');
 	}
 }

@@ -10,42 +10,46 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Arrondissement
+ * Class Quartier
  * 
  * @property int $id
  * @property string $uuid
  * @property string $nom
- * @property int $departements_id
+ * @property int $chef_id
+ * @property int $communes_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\Departement $departement
- * @property \Illuminate\Database\Eloquent\Collection $communes
+ * @property \App\Commune $commune
+ * @property \Illuminate\Database\Eloquent\Collection $employees
  *
  * @package App
  */
-class Arrondissement extends Eloquent
+class Quartier extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	protected $table = 'quartier';
 
 	protected $casts = [
-		'departements_id' => 'int'
+		'chef_id' => 'int',
+		'communes_id' => 'int'
 	];
 
 	protected $fillable = [
 		'uuid',
 		'nom',
-		'departements_id'
+		'chef_id',
+		'communes_id'
 	];
 
-	public function departement()
+	public function commune()
 	{
-		return $this->belongsTo(\App\Departement::class, 'departements_id');
+		return $this->belongsTo(\App\Commune::class, 'communes_id');
 	}
 
-	public function communes()
+	public function employees()
 	{
-		return $this->hasMany(\App\Commune::class, 'arrondissements_id');
+		return $this->hasMany(\App\Employee::class);
 	}
 }
