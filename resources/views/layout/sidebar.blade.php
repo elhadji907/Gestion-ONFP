@@ -4,7 +4,7 @@
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
   <div class="sidebar-brand-icon rotate-n-15">
    {{--   <i class="fas fa-laugh-wink"></i>  --}}
-   <img src="{{ asset('img/onfp.png') }}" class="img-fluid logo_onfp" alt="LOGO">
+   <img src="{{ asset('img/ONFP.png') }}" class="img-fluid logo_onfp" alt="LOGO">
   </div>
   <div class="sidebar-brand-text mx-3">ONFP<sup></sup></div>
 </a>
@@ -86,7 +86,7 @@
       <a class="collapse-item" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
       @endif
       @else
-      <a class="collapse-item" href="#">COURRIER</a>
+      <a class="collapse-item" href="#">Service Courrier</a>
       <a class="collapse-item" href="#">DIOF</a>
       <a class="collapse-item" href="#">DEC</a>
       <a class="collapse-item" href="#">DPP</a>
