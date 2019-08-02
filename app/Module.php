@@ -27,7 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Module extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'domaines_id' => 'int'

@@ -29,7 +29,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Gestionnaire extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'users_id' => 'int'

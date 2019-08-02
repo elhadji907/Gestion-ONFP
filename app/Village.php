@@ -16,10 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $uuid
  * @property string $nom
  * @property int $chef_id
- * @property int $communes_id
- * @property string $deleted_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property int $com
  * 
  * @property \App\Commune $commune
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
@@ -28,7 +25,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Village extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'chef_id' => 'int',

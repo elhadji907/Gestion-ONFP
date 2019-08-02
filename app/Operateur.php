@@ -30,7 +30,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Operateur extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'administrateurs_id' => 'int'

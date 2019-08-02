@@ -31,7 +31,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Reglement extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'montant' => 'float',
