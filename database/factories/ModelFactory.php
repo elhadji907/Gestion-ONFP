@@ -445,3 +445,197 @@ $factory->define(App\Quartier::class, function (Faker $faker) {
         },
     ];
 });
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Antenne::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'sigle' => $faker->word,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Arrife::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Demande::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'lieux_id' => function () {
+            return factory(App\Lieux::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\DemandesHasDisponibilite::class, function (Faker $faker) {
+    return [
+        'disponibilites_id' => function () {
+            return factory(App\Disponibilite::class)->create()->id;
+        },
+        'demandes_id' => function () {
+            return factory(App\Demande::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\DemandesHasModule::class, function (Faker $faker) {
+    return [
+        'modules_id' => function () {
+            return factory(App\Module::class)->create()->id;
+        },
+        'demandes_id' => function () {
+            return factory(App\Demande::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Depart::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Direction::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'sigle' => $faker->word,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Disponibilite::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'mois' => $faker->word,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Institution::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Interne::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Lieux::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Niveau::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\OperateursHasNiveaux::class, function (Faker $faker) {
+    return [
+        'niveaux_id' => function () {
+            return factory(App\Niveau::class)->create()->id;
+        },
+        'operateurs_id' => function () {
+            return factory(App\Operateur::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Programme::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'duree' => $faker->word,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Secteur::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\Service::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'sigle' => $faker->word,
+        'courriers_id' => function () {
+            return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});

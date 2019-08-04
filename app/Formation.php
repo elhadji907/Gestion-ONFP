@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:51:34 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
@@ -16,14 +16,16 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $uuid
  * @property int $code
  * @property string $name
- * @property string $numero
+ * @property string $effectif_total
  * @property \Carbon\Carbon $date
- * @property string $valeur
  * @property int $compteurs_id
  * @property int $factures_id
  * @property int $agents_id
  * @property int $detfs_id
  * @property int $conventions_id
+ * @property int $demandes_id
+ * @property int $nivaux_id
+ * @property int $programmes_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -32,14 +34,17 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \App\Operateur $operateur
  * @property \App\Facture $facture
  * @property \App\Convention $convention
+ * @property \App\Demande $demande
  * @property \App\Detf $detf
+ * @property \App\Niveau $niveau
+ * @property \App\Programme $programme
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  *
  * @package App
  */
 class Formation extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'code' => 'int',
@@ -47,7 +52,10 @@ class Formation extends Eloquent
 		'factures_id' => 'int',
 		'agents_id' => 'int',
 		'detfs_id' => 'int',
-		'conventions_id' => 'int'
+		'conventions_id' => 'int',
+		'demandes_id' => 'int',
+		'nivaux_id' => 'int',
+		'programmes_id' => 'int'
 	];
 
 	protected $dates = [
@@ -58,14 +66,16 @@ class Formation extends Eloquent
 		'uuid',
 		'code',
 		'name',
-		'numero',
+		'effectif_total',
 		'date',
-		'valeur',
 		'compteurs_id',
 		'factures_id',
 		'agents_id',
 		'detfs_id',
-		'conventions_id'
+		'conventions_id',
+		'demandes_id',
+		'nivaux_id',
+		'programmes_id'
 	];
 
 	public function agent()
@@ -88,9 +98,24 @@ class Formation extends Eloquent
 		return $this->belongsTo(\App\Convention::class, 'conventions_id');
 	}
 
+	public function demande()
+	{
+		return $this->belongsTo(\App\Demande::class, 'demandes_id');
+	}
+
 	public function detf()
 	{
 		return $this->belongsTo(\App\Detf::class, 'detfs_id');
+	}
+
+	public function niveau()
+	{
+		return $this->belongsTo(\App\Niveau::class, 'nivaux_id');
+	}
+
+	public function programme()
+	{
+		return $this->belongsTo(\App\Programme::class, 'programmes_id');
 	}
 
 	public function beneficiaires()

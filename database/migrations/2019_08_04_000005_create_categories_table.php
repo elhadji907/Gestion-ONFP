@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOperateursTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'operateurs';
+    public $tableName = 'categories';
 
     /**
      * Run the migrations.
-     * @table operateurs
+     * @table categories
      *
      * @return void
      */
@@ -24,18 +24,9 @@ class CreateOperateursTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('numero_agrement', 200)->nullable();
-            $table->unsignedInteger('administrateurs_id');
-
-            $table->index(["administrateurs_id"], 'fk_compteurs_administrateurs1_idx');
+            $table->string('name', 200);
             $table->softDeletes();
             $table->nullableTimestamps();
-
-
-            $table->foreign('administrateurs_id', 'fk_compteurs_administrateurs1_idx')
-                ->references('id')->on('administrateurs')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:51:34 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
@@ -27,7 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Arrondissement extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'departements_id' => 'int'

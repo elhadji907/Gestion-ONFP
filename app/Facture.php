@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:51:34 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
@@ -14,11 +14,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $uuid
- * @property \Carbon\Carbon $date_limite
+ * @property string $numero
+ * @property \Carbon\Carbon $date_etablissement
  * @property string $details
  * @property float $montant
- * @property \Carbon\Carbon $debut_consommation
- * @property \Carbon\Carbon $fin_consommation
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -30,25 +29,22 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Facture extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'montant' => 'float'
 	];
 
 	protected $dates = [
-		'date_limite',
-		'debut_consommation',
-		'fin_consommation'
+		'date_etablissement'
 	];
 
 	protected $fillable = [
 		'uuid',
-		'date_limite',
+		'numero',
+		'date_etablissement',
 		'details',
-		'montant',
-		'debut_consommation',
-		'fin_consommation'
+		'montant'
 	];
 
 	public function formations()

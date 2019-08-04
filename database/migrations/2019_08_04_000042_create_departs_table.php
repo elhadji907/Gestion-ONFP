@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateDepartsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'categories';
+    public $tableName = 'departs';
 
     /**
      * Run the migrations.
-     * @table categories
+     * @table departs
      *
      * @return void
      */
@@ -24,15 +24,14 @@ class CreateCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('name', 200);
             $table->unsignedInteger('courriers_id');
 
-            $table->index(["courriers_id"], 'fk_categories_courriers1_idx');
+            $table->index(["courriers_id"], 'fk_depart_courriers1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('courriers_id', 'fk_categories_courriers1_idx')
+            $table->foreign('courriers_id', 'fk_depart_courriers1_idx')
                 ->references('id')->on('courriers')
                 ->onDelete('no action')
                 ->onUpdate('no action');

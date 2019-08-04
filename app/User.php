@@ -2,15 +2,15 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:56:08 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
-
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  * Class User
  * 
@@ -23,7 +23,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
  * @property int $roles_id
- * @property string $remember_token
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -36,6 +35,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Database\Eloquent\Collection $courriers
  * @property \Illuminate\Database\Eloquent\Collection $employees
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
+ * @property \Illuminate\Database\Eloquent\Collection $operateurs
  *
  * @package App
  */
@@ -54,8 +54,7 @@ class User extends Authenticatable
 	];
 
 	protected $hidden = [
-		'password',
-		'remember_token'
+		'password'
 	];
 
 	protected $fillable = [
@@ -66,8 +65,7 @@ class User extends Authenticatable
 		'email',
 		'email_verified_at',
 		'password',
-		'roles_id',
-		'remember_token'
+		'roles_id'
 	];
 
 	public function role()
@@ -108,5 +106,10 @@ class User extends Authenticatable
 	public function gestionnaires()
 	{
 		return $this->hasMany(\App\Gestionnaire::class, 'users_id');
+	}
+
+	public function operateurs()
+	{
+		return $this->hasMany(\App\Operateur::class, 'users_id');
 	}
 }

@@ -10,42 +10,38 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Administrateur
+ * Class Niveau
  * 
  * @property int $id
  * @property string $uuid
- * @property string $matricule
- * @property int $users_id
+ * @property string $name
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection $formations
  * @property \Illuminate\Database\Eloquent\Collection $operateurs
  *
  * @package App
  */
-class Administrateur extends Eloquent
+class Niveau extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $casts = [
-		'users_id' => 'int'
-	];
-
 	protected $fillable = [
 		'uuid',
-		'matricule',
-		'users_id'
+		'name'
 	];
 
-	public function user()
+	public function formations()
 	{
-		return $this->belongsTo(\App\User::class, 'users_id');
+		return $this->hasMany(\App\Formation::class, 'nivaux_id');
 	}
 
 	public function operateurs()
 	{
-		return $this->hasMany(\App\Operateur::class, 'administrateurs_id');
+		return $this->belongsToMany(\App\Operateur::class, 'operateurs_has_niveaux', 'niveaux_id', 'operateurs_id')
+					->withPivot('deleted_at')
+					->withTimestamps();
 	}
 }

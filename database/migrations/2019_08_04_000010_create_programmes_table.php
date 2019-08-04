@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConventionsTable extends Migration
+class CreateProgrammesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'conventions';
+    public $tableName = 'programmes';
 
     /**
      * Run the migrations.
-     * @table conventions
+     * @table programmes
      *
      * @return void
      */
@@ -25,6 +25,7 @@ class CreateConventionsTable extends Migration
             $table->increments('id');
             $table->char('uuid', 36);
             $table->string('name', 200);
+            $table->string('duree', 200)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
         });

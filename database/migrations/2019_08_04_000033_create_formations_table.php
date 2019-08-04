@@ -26,24 +26,32 @@ class CreateFormationsTable extends Migration
             $table->char('uuid', 36);
             $table->unsignedInteger('code');
             $table->string('name', 200)->nullable();
-            $table->string('numero', 200)->nullable();
+            $table->string('effectif_total', 200)->nullable();
             $table->dateTime('date')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('valeur', 200)->nullable();
             $table->unsignedInteger('compteurs_id');
             $table->unsignedInteger('factures_id')->nullable();
             $table->unsignedInteger('agents_id');
             $table->unsignedInteger('detfs_id');
             $table->unsignedInteger('conventions_id');
+            $table->unsignedInteger('demandes_id');
+            $table->unsignedInteger('nivaux_id');
+            $table->unsignedInteger('programmes_id')->nullable();
 
             $table->index(["agents_id"], 'fk_consommations_agents1_idx');
 
-            $table->index(["factures_id"], 'fk_consommations_factures1_idx');
+            $table->index(["conventions_id"], 'fk_formations_conventions1_idx');
+
+            $table->index(["nivaux_id"], 'fk_formations_nivaux1_idx');
+
+            $table->index(["programmes_id"], 'fk_formations_programmes1_idx');
 
             $table->index(["compteurs_id"], 'fk_consommations_compteurs1_idx');
 
-            $table->index(["detfs_id"], 'fk_formations_detfs1_idx');
+            $table->index(["demandes_id"], 'fk_formations_demandes1_idx');
 
-            $table->index(["conventions_id"], 'fk_formations_conventions1_idx');
+            $table->index(["factures_id"], 'fk_consommations_factures1_idx');
+
+            $table->index(["detfs_id"], 'fk_formations_detfs1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
@@ -70,6 +78,21 @@ class CreateFormationsTable extends Migration
 
             $table->foreign('conventions_id', 'fk_formations_conventions1_idx')
                 ->references('id')->on('conventions')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('demandes_id', 'fk_formations_demandes1_idx')
+                ->references('id')->on('demandes')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('nivaux_id', 'fk_formations_nivaux1_idx')
+                ->references('id')->on('niveaux')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('programmes_id', 'fk_formations_programmes1_idx')
+                ->references('id')->on('programmes')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

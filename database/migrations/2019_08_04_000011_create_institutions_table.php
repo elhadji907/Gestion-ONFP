@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFacturesTable extends Migration
+class CreateInstitutionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'factures';
+    public $tableName = 'institutions';
 
     /**
      * Run the migrations.
-     * @table factures
+     * @table institutions
      *
      * @return void
      */
@@ -24,11 +24,7 @@ class CreateFacturesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->dateTime('date_limite')->nullable();
-            $table->string('details', 200)->nullable();
-            $table->decimal('montant')->nullable();
-            $table->dateTime('debut_consommation')->nullable();
-            $table->dateTime('fin_consommation')->nullable();
+            $table->string('name', 200);
             $table->softDeletes();
             $table->nullableTimestamps();
         });

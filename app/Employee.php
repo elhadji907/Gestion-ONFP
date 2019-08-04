@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:51:34 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
@@ -18,22 +18,26 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $cin
  * @property int $users_id
  * @property int $quartier_id
+ * @property int $categories_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
+ * @property \App\Category $category
  * @property \App\Quartier $quartier
  * @property \App\User $user
+ * @property \Illuminate\Database\Eloquent\Collection $courriers
  *
  * @package App
  */
 class Employee extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'users_id' => 'int',
-		'quartier_id' => 'int'
+		'quartier_id' => 'int',
+		'categories_id' => 'int'
 	];
 
 	protected $fillable = [
@@ -41,8 +45,14 @@ class Employee extends Eloquent
 		'matricule',
 		'cin',
 		'users_id',
-		'quartier_id'
+		'quartier_id',
+		'categories_id'
 	];
+
+	public function category()
+	{
+		return $this->belongsTo(\App\Category::class, 'categories_id');
+	}
 
 	public function quartier()
 	{
@@ -52,5 +62,10 @@ class Employee extends Eloquent
 	public function user()
 	{
 		return $this->belongsTo(\App\User::class, 'users_id');
+	}
+
+	public function courriers()
+	{
+		return $this->hasMany(\App\Courrier::class, 'employees_id');
 	}
 }

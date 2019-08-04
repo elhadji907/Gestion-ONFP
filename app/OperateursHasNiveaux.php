@@ -10,35 +10,36 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class DomainesHasOperateur
+ * Class OperateursHasNiveaux
  * 
- * @property int $domaines_id
  * @property int $operateurs_id
+ * @property int $niveaux_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\Domaine $domaine
+ * @property \App\Niveau $niveau
  * @property \App\Operateur $operateur
  *
  * @package App
  */
-class DomainesHasOperateur extends Eloquent
+class OperateursHasNiveaux extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	protected $primaryKey = 'domaines_id';
+	protected $table = 'operateurs_has_niveaux';
+	protected $primaryKey = 'operateurs_id';
 
 	protected $casts = [
-		'operateurs_id' => 'int'
+		'niveaux_id' => 'int'
 	];
 
 	protected $fillable = [
-		'operateurs_id'
+		'niveaux_id'
 	];
 
-	public function domaine()
+	public function niveau()
 	{
-		return $this->belongsTo(\App\Domaine::class, 'domaines_id');
+		return $this->belongsTo(\App\Niveau::class, 'niveaux_id');
 	}
 
 	public function operateur()

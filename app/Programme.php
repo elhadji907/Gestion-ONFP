@@ -10,30 +10,32 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Region
+ * Class Programme
  * 
  * @property int $id
  * @property string $uuid
- * @property string $nom
+ * @property string $name
+ * @property string $duree
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $departements
+ * @property \Illuminate\Database\Eloquent\Collection $formations
  *
  * @package App
  */
-class Region extends Eloquent
+class Programme extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $fillable = [
 		'uuid',
-		'nom'
+		'name',
+		'duree'
 	];
 
-	public function departements()
+	public function formations()
 	{
-		return $this->hasMany(\App\Departement::class, 'regions_id');
+		return $this->hasMany(\App\Formation::class, 'programmes_id');
 	}
 }

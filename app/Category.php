@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 01 Aug 2019 09:51:34 +0000.
+ * Date: Sun, 04 Aug 2019 16:10:25 +0000.
  */
 
 namespace App;
@@ -15,31 +15,25 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property string $uuid
  * @property string $name
- * @property int $courriers_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\Courrier $courrier
+ * @property \Illuminate\Database\Eloquent\Collection $employees
  *
  * @package App
  */
 class Category extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;use \App\Helpers\UuidForKey;
-
-	protected $casts = [
-		'courriers_id' => 'int'
-	];
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $fillable = [
 		'uuid',
-		'name',
-		'courriers_id'
+		'name'
 	];
 
-	public function courrier()
+	public function employees()
 	{
-		return $this->belongsTo(\App\Courrier::class, 'courriers_id');
+		return $this->hasMany(\App\Employee::class, 'categories_id');
 	}
 }

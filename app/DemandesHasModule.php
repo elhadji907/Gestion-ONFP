@@ -10,39 +10,39 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class ModulesHasOperateur
+ * Class DemandesHasModule
  * 
+ * @property int $demandes_id
  * @property int $modules_id
- * @property int $operateurs_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
+ * @property \App\Demande $demande
  * @property \App\Module $module
- * @property \App\Operateur $operateur
  *
  * @package App
  */
-class ModulesHasOperateur extends Eloquent
+class DemandesHasModule extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	protected $primaryKey = 'modules_id';
+	protected $primaryKey = 'demandes_id';
 
 	protected $casts = [
-		'operateurs_id' => 'int'
+		'modules_id' => 'int'
 	];
 
 	protected $fillable = [
-		'operateurs_id'
+		'modules_id'
 	];
+
+	public function demande()
+	{
+		return $this->belongsTo(\App\Demande::class, 'demandes_id');
+	}
 
 	public function module()
 	{
 		return $this->belongsTo(\App\Module::class, 'modules_id');
-	}
-
-	public function operateur()
-	{
-		return $this->belongsTo(\App\Operateur::class, 'operateurs_id');
 	}
 }

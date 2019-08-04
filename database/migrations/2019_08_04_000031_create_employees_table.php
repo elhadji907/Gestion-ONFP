@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourriersTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'courriers';
+    public $tableName = 'employees';
 
     /**
      * Run the migrations.
-     * @table courriers
+     * @table employees
      *
      * @return void
      */
@@ -24,26 +24,33 @@ class CreateCourriersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('numero', 200);
-            $table->timestamp('date')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('details', 200)->nullable();
-            $table->unsignedInteger('gestionnaires_id');
+            $table->string('matricule', 200);
+            $table->string('cin', 20);
             $table->unsignedInteger('users_id');
+            $table->unsignedInteger('quartier_id');
+            $table->unsignedInteger('categories_id');
 
-            $table->index(["gestionnaires_id"], 'fk_courriers_gestionnaires1_idx');
+            $table->index(["quartier_id"], 'fk_employees_quartier1_idx');
 
-            $table->index(["users_id"], 'fk_courriers_users1_idx');
+            $table->index(["users_id"], 'fk_employees_users1_idx');
+
+            $table->index(["categories_id"], 'fk_employees_categories1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('gestionnaires_id', 'fk_courriers_gestionnaires1_idx')
-                ->references('id')->on('gestionnaires')
+            $table->foreign('users_id', 'fk_employees_users1_idx')
+                ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('users_id', 'fk_courriers_users1_idx')
-                ->references('id')->on('users')
+            $table->foreign('quartier_id', 'fk_employees_quartier1_idx')
+                ->references('id')->on('quartier')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('categories_id', 'fk_employees_categories1_idx')
+                ->references('id')->on('categories')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

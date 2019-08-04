@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetfsTable extends Migration
+class CreateDirectionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'detfs';
+    public $tableName = 'directions';
 
     /**
      * Run the migrations.
-     * @table detfs
+     * @table directions
      *
      * @return void
      */
@@ -24,9 +24,19 @@ class CreateDetfsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('name', 200);
+            $table->string('name', 200)->nullable();
+            $table->string('sigle', 200)->nullable();
+            $table->unsignedInteger('courriers_id');
+
+            $table->index(["courriers_id"], 'fk_directions_courriers1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
+
+
+            $table->foreign('courriers_id', 'fk_directions_courriers1_idx')
+                ->references('id')->on('courriers')
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 
