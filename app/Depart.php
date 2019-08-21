@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
@@ -14,6 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $uuid
+ * @property string $name
  * @property int $courriers_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
@@ -33,6 +34,7 @@ class Depart extends Eloquent
 
 	protected $fillable = [
 		'uuid',
+		'name',
 		'courriers_id'
 	];
 

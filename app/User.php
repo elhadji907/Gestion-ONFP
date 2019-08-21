@@ -2,10 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,9 +21,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $name
  * @property string $telephone
  * @property string $email
+ * @property string $sexe
+ * @property \Carbon\Carbon $date_naissance
+ * @property string $lieu_naissance
+ * @property string $situation_familiale
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
  * @property int $roles_id
+ * @property string $remember_token
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -33,13 +39,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  * @property \Illuminate\Database\Eloquent\Collection $comptables
  * @property \Illuminate\Database\Eloquent\Collection $courriers
+ * @property \Illuminate\Database\Eloquent\Collection $demandes
  * @property \Illuminate\Database\Eloquent\Collection $employees
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
  * @property \Illuminate\Database\Eloquent\Collection $operateurs
  *
  * @package App
  */
-class User extends Authenticatable
+class User extends  Authenticatable
 {
 	use Notifiable;
 	use \Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,11 +57,13 @@ class User extends Authenticatable
 	];
 
 	protected $dates = [
+		'date_naissance',
 		'email_verified_at'
 	];
 
 	protected $hidden = [
-		'password'
+		'password',
+		'remember_token'
 	];
 
 	protected $fillable = [
@@ -63,9 +72,14 @@ class User extends Authenticatable
 		'name',
 		'telephone',
 		'email',
+		'sexe',
+		'date_naissance',
+		'lieu_naissance',
+		'situation_familiale',
 		'email_verified_at',
 		'password',
-		'roles_id'
+		'roles_id',
+		'remember_token'
 	];
 
 	public function role()
@@ -96,6 +110,11 @@ class User extends Authenticatable
 	public function courriers()
 	{
 		return $this->hasMany(\App\Courrier::class, 'users_id');
+	}
+
+	public function demandes()
+	{
+		return $this->hasMany(\App\Demande::class, 'users_id');
 	}
 
 	public function employees()

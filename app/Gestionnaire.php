@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
@@ -24,12 +24,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Illuminate\Database\Eloquent\Collection $agrements
  * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  * @property \Illuminate\Database\Eloquent\Collection $courriers
+ * @property \Illuminate\Database\Eloquent\Collection $formation_personnels
  *
  * @package App
  */
 class Gestionnaire extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'users_id' => 'int'
@@ -59,5 +61,10 @@ class Gestionnaire extends Eloquent
 	public function courriers()
 	{
 		return $this->hasMany(\App\Courrier::class, 'gestionnaires_id');
+	}
+
+	public function formation_personnels()
+	{
+		return $this->hasMany(\App\FormationPersonnel::class, 'gestionnaires_id');
 	}
 }

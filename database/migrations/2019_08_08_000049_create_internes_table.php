@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgrementsTable extends Migration
+class CreateInternesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'agrements';
+    public $tableName = 'internes';
 
     /**
      * Run the migrations.
-     * @table agrements
+     * @table internes
      *
      * @return void
      */
@@ -24,24 +24,16 @@ class CreateAgrementsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('details', 200)->nullable();
-            $table->unsignedInteger('compteurs_id');
-            $table->unsignedInteger('gestionnaires_id');
+            $table->string('name', 200)->nullable();
+            $table->unsignedInteger('courriers_id');
 
-            $table->index(["gestionnaires_id"], 'fk_agrements_gestionnaires1_idx');
-
-            $table->index(["compteurs_id"], 'fk_abonnements_compteurs1_idx');
+            $table->index(["courriers_id"], 'fk_interne_courriers1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('compteurs_id', 'fk_abonnements_compteurs1_idx')
-                ->references('id')->on('operateurs')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('gestionnaires_id', 'fk_agrements_gestionnaires1_idx')
-                ->references('id')->on('gestionnaires')
+            $table->foreign('courriers_id', 'fk_interne_courriers1_idx')
+                ->references('id')->on('courriers')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

@@ -27,8 +27,9 @@ class CreateFormationsTable extends Migration
             $table->unsignedInteger('code');
             $table->string('name', 200)->nullable();
             $table->string('effectif_total', 200)->nullable();
-            $table->dateTime('date')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->unsignedInteger('compteurs_id');
+            $table->dateTime('date_pv')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('date_debut')->nullable();
+            $table->dateTime('date_fin')->nullable();
             $table->unsignedInteger('factures_id')->nullable();
             $table->unsignedInteger('agents_id');
             $table->unsignedInteger('detfs_id');
@@ -45,8 +46,6 @@ class CreateFormationsTable extends Migration
 
             $table->index(["programmes_id"], 'fk_formations_programmes1_idx');
 
-            $table->index(["compteurs_id"], 'fk_consommations_compteurs1_idx');
-
             $table->index(["demandes_id"], 'fk_formations_demandes1_idx');
 
             $table->index(["factures_id"], 'fk_consommations_factures1_idx');
@@ -55,11 +54,6 @@ class CreateFormationsTable extends Migration
             $table->softDeletes();
             $table->nullableTimestamps();
 
-
-            $table->foreign('compteurs_id', 'fk_consommations_compteurs1_idx')
-                ->references('id')->on('operateurs')
-                ->onDelete('no action')
-                ->onUpdate('no action');
 
             $table->foreign('factures_id', 'fk_consommations_factures1_idx')
                 ->references('id')->on('factures')

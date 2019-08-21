@@ -86,18 +86,26 @@
       <a class="collapse-item" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
       @endif
       @else
-      <a class="collapse-item" href="#">Service Courrier</a>
+      <h6 class="collapse-header">DIRECTIONS</h6>
       <a class="collapse-item" href="#">DIOF</a>
       <a class="collapse-item" href="#">DEC</a>
       <a class="collapse-item" href="#">DPP</a>
       <a class="collapse-item" href="#">DAF</a>
       <a class="collapse-item" href="#">CG</a>
       <a class="collapse-item" href="#">AC</a>
+      <h6 class="collapse-header">SERVICES</h6>
+      <a class="collapse-item" href="#">Service Courrier</a>      
       <a class="collapse-item" href="#">COM</a>
       <a class="collapse-item" href="#">URD</a>      
       <a class="collapse-item" href="#">EDITION</a>
+      <a class="collapse-item" href="#">SI</a>
       <a class="collapse-item" href="#">CONSTRUCTION</a>
-      <a class="collapse-item" href="#">ANTENNES</a>
+      <h6 class="collapse-header">ANTENNES</h6>
+      <a class="collapse-item" href="#">KOLDA</a>
+      <a class="collapse-item" href="#">KAOLACK</a>
+      <a class="collapse-item" href="#">SAINT-LOUIS</a>
+      <a class="collapse-item" href="#">KEDOUGOU</a>
+      <a class="collapse-item" href="#">MATAM</a>
 
       {{-- 
       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>

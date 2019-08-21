@@ -26,6 +26,9 @@ class CreateEmployeesTable extends Migration
             $table->char('uuid', 36);
             $table->string('matricule', 200);
             $table->string('cin', 20);
+            $table->dateTime('date_embauche')->nullable();
+            $table->string('classification', 200)->nullable();
+            $table->string('categorie_salaire', 200)->nullable();
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('quartier_id');
             $table->unsignedInteger('categories_id');

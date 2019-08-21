@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
@@ -13,6 +13,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * Class Arrife
  * 
  * @property int $id
+ * @property string $name
  * @property string $uuid
  * @property int $courriers_id
  * @property string $deleted_at
@@ -32,6 +33,7 @@ class Arrife extends Eloquent
 	];
 
 	protected $fillable = [
+		'name',
 		'uuid',
 		'courriers_id'
 	];

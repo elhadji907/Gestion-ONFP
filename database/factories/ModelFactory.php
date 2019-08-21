@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 // use Faker\Generator as Faker;
 
-$factory->define(App\Administrateur::class, function (Faker $faker) {
+/* $factory->define(App\Administrateur::class, function (Faker $faker) {
     return [
         'uuid' => $faker->uuid,
         'matricule' => $faker->word,
@@ -16,7 +16,19 @@ $factory->define(App\Administrateur::class, function (Faker $faker) {
             return factory(App\User::class)->create()->id;
         },
     ];
+}); */
+
+$factory->define(App\Administrateur::class, function (Faker\Generator $faker) {
+    $role_id=App\Role::where('name','Administrateur')->first()->id;
+    return [
+        'matricule' => "ADMIN".$faker->word,
+        'users_id' => function () use($role_id) {
+             return factory(App\User::class)->create(["roles_id"=>$role_id])->id;
+        },
+    ];
 });
+
+
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 // use Faker\Generator as Faker;
@@ -447,7 +459,7 @@ $factory->define(App\Quartier::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Antenne::class, function (Faker $faker) {
     return [
@@ -461,7 +473,7 @@ $factory->define(App\Antenne::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Arrife::class, function (Faker $faker) {
     return [
@@ -473,7 +485,7 @@ $factory->define(App\Arrife::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Demande::class, function (Faker $faker) {
     return [
@@ -486,7 +498,7 @@ $factory->define(App\Demande::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\DemandesHasDisponibilite::class, function (Faker $faker) {
     return [
@@ -500,7 +512,7 @@ $factory->define(App\DemandesHasDisponibilite::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\DemandesHasModule::class, function (Faker $faker) {
     return [
@@ -514,7 +526,7 @@ $factory->define(App\DemandesHasModule::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Depart::class, function (Faker $faker) {
     return [
@@ -526,7 +538,7 @@ $factory->define(App\Depart::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Direction::class, function (Faker $faker) {
     return [
@@ -540,7 +552,7 @@ $factory->define(App\Direction::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Disponibilite::class, function (Faker $faker) {
     return [
@@ -550,7 +562,7 @@ $factory->define(App\Disponibilite::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Institution::class, function (Faker $faker) {
     return [
@@ -560,7 +572,7 @@ $factory->define(App\Institution::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Interne::class, function (Faker $faker) {
     return [
@@ -572,7 +584,7 @@ $factory->define(App\Interne::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Lieux::class, function (Faker $faker) {
     return [
@@ -582,7 +594,7 @@ $factory->define(App\Lieux::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Niveau::class, function (Faker $faker) {
     return [
@@ -592,7 +604,7 @@ $factory->define(App\Niveau::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\OperateursHasNiveaux::class, function (Faker $faker) {
     return [
@@ -606,7 +618,7 @@ $factory->define(App\OperateursHasNiveaux::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Programme::class, function (Faker $faker) {
     return [
@@ -617,7 +629,7 @@ $factory->define(App\Programme::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Secteur::class, function (Faker $faker) {
     return [
@@ -627,7 +639,7 @@ $factory->define(App\Secteur::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+// use Faker\Generator as Faker;
 
 $factory->define(App\Service::class, function (Faker $faker) {
     return [
@@ -636,6 +648,146 @@ $factory->define(App\Service::class, function (Faker $faker) {
         'sigle' => $faker->word,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Attestation::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'name' => $faker->name,
+        'formations_id' => function () {
+            return factory(App\Formation::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\DomainesHasDemande::class, function (Faker $faker) {
+    return [
+        'demandes_id' => function () {
+            return factory(App\Demande::class)->create()->id;
+        },
+        'domaines_id' => function () {
+            return factory(App\Domaine::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\EmployeesHasFormationPersonnel::class, function (Faker $faker) {
+    return [
+        'formation_personnels_id' => function () {
+            return factory(App\FormationPersonnel::class)->create()->id;
+        },
+        'employees_id' => function () {
+            return factory(App\Employee::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Evaluation::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'name' => $faker->name,
+        'date' => $faker->dateTime(),
+        'formations_id' => function () {
+            return factory(App\Formation::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\FormationPersonnel::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'theme' => $faker->word,
+        'name' => $faker->name,
+        'periode' => $faker->word,
+        'date_debut' => $faker->dateTime(),
+        'date_fin' => $faker->dateTime(),
+        'cout' => $faker->word,
+        'lieu' => $faker->word,
+        'operateur' => $faker->word,
+        'statut' => $faker->word,
+        'observation' => $faker->word,
+        'gestionnaires_id' => function () {
+            return factory(App\Gestionnaire::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Mission::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'name' => $faker->name,
+        'account' => $faker->word,
+        'reliquat' => $faker->word,
+        'montant_total' => $faker->word,
+        'destination' => $faker->word,
+        'date_debut' => $faker->dateTime(),
+        'date_fin' => $faker->dateTime(),
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\MissionsHasEmployee::class, function (Faker $faker) {
+    return [
+        'employees_id' => function () {
+            return factory(App\Employee::class)->create()->id;
+        },
+        'missions_id' => function () {
+            return factory(App\Mission::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Titre::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'numero' => $faker->word,
+        'name' => $faker->name,
+        'lieu' => $faker->word,
+        'categories' => $faker->word,
+        'formations_id' => function () {
+            return factory(App\Formation::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+use Faker\Generator as Faker;
+
+$factory->define(App\AgrementsType::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'name' => $faker->name,
+        'agrements_id' => function () {
+            return factory(App\Agrement::class)->create()->id;
         },
     ];
 });

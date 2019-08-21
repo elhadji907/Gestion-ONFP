@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
@@ -32,7 +32,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \App\User $user
  * @property \Illuminate\Database\Eloquent\Collection $agrements
  * @property \Illuminate\Database\Eloquent\Collection $domaines
- * @property \Illuminate\Database\Eloquent\Collection $formations
  * @property \Illuminate\Database\Eloquent\Collection $modules
  * @property \Illuminate\Database\Eloquent\Collection $niveaux
  *
@@ -83,7 +82,7 @@ class Operateur extends Eloquent
 
 	public function agrements()
 	{
-		return $this->hasMany(\App\Agrement::class, 'compteurs_id');
+		return $this->hasMany(\App\Agrement::class, 'operateurs_id');
 	}
 
 	public function domaines()
@@ -91,11 +90,6 @@ class Operateur extends Eloquent
 		return $this->belongsToMany(\App\Domaine::class, 'domaines_has_operateurs', 'operateurs_id', 'domaines_id')
 					->withPivot('deleted_at')
 					->withTimestamps();
-	}
-
-	public function formations()
-	{
-		return $this->hasMany(\App\Formation::class, 'compteurs_id');
 	}
 
 	public function modules()

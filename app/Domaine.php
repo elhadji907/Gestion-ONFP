@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 04 Aug 2019 16:10:25 +0000.
+ * Date: Thu, 08 Aug 2019 18:12:44 +0000.
  */
 
 namespace App;
@@ -19,6 +19,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
+ * @property \Illuminate\Database\Eloquent\Collection $demandes
  * @property \Illuminate\Database\Eloquent\Collection $operateurs
  * @property \Illuminate\Database\Eloquent\Collection $modules
  *
@@ -32,6 +33,13 @@ class Domaine extends Eloquent
 		'uuid',
 		'name'
 	];
+
+	public function demandes()
+	{
+		return $this->belongsToMany(\App\Demande::class, 'domaines_has_demandes', 'domaines_id', 'demandes_id')
+					->withPivot('deleted_at')
+					->withTimestamps();
+	}
 
 	public function operateurs()
 	{

@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateArrivesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'users';
+    public $tableName = 'arrives';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table arrives
      *
      * @return void
      */
@@ -23,25 +23,17 @@ class CreateUsersTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->char('uuid', 36);
-            $table->string('firstname', 200)->nullable();
             $table->string('name', 200)->nullable();
-            $table->string('telephone', 200)->nullable();
-            $table->string('email', 200)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->unsignedInteger('roles_id');
-            $table->rememberToken();
+            $table->char('uuid', 36);
+            $table->unsignedInteger('courriers_id');
 
-            $table->index(["roles_id"], 'fk_users_roles1_idx');
-
-            $table->unique(["email"], 'email_UNIQUE');
+            $table->index(["courriers_id"], 'fk_categories_courriers1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('roles_id', 'fk_users_roles1_idx')
-                ->references('id')->on('roles')
+            $table->foreign('courriers_id', 'fk_categories_courriers1_idx')
+                ->references('id')->on('courriers')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

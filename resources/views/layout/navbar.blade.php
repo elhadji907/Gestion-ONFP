@@ -10,7 +10,7 @@
       <!-- Topbar Search -->
       <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
-          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+          <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher..." aria-label="Search" aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">
               <i class="fas fa-search fa-sm"></i>
@@ -61,7 +61,7 @@
             </div>
             <div>
               <div class="small text-gray-500">December 2, 2019</div>
-              Spending Alert: We've noticed unusually high spending for your account.
+              Spending Alert: We have noticed unusually high spending for your account.
             </div>
           </a>
           <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -86,7 +86,7 @@
               <div class="status-indicator bg-success"></div>
             </div>
             <div class="font-weight-bold">
-              <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+              <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I have been having.</div>
               <div class="small text-gray-500">Emily Fowler · 58m</div>
             </div>
           </a>
@@ -106,7 +106,7 @@
               <div class="status-indicator bg-warning"></div>
             </div>
             <div>
-              <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+              <div class="text-truncate">Last month is report looks great, I am very happy with the progress so far, keep up the good work!</div>
               <div class="small text-gray-500">Morgan Alvarez · 2d</div>
             </div>
           </a>
@@ -116,7 +116,7 @@
               <div class="status-indicator bg-success"></div>
             </div>
             <div>
-              <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+              <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they are not good...</div>
               <div class="small text-gray-500">Chicken the Dog · 2w</div>
             </div>
           </a>
@@ -136,20 +136,20 @@
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            Profile
+           {{(" Profil")}}
           </a>
           <a class="dropdown-item" href="#">
             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-            Settings
+            {{ ("Réglages") }}
           </a>
           <a class="dropdown-item" href="#">
             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-            Activity Log
+            {{ "Journal d'activité" }}
           </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-            Logout
+            {{ ("Déconnexion ") }}
           </a>
         </div>
       </li>
