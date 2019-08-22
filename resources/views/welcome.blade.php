@@ -161,8 +161,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>CONTACTS</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <h2><strong>CONTACTS</strong></h2>
+          {{--  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>  --}}
+          <h2><em>{{ ("Direction Générale") }}</em></h2>
+          <p><b>Adresse: </b>{{ ("SIPRES 1, lot 2 – 2 Voies Liberté 6 extension VDN") }}<p>
+          <p><b>BP: </b>{{ ("21013 Dakar – Ponty") }}</p>
         </div>
       </div>
     </div>
