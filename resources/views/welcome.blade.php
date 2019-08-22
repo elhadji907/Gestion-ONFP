@@ -49,7 +49,10 @@
             <a class="nav-link js-scroll-trigger" href="#services">SERVICES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>
+            <a class="nav-link js-scroll-trigger" href="#cibles">CIBLES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">CONTACTS</a>
           </li>
           @if (Route::has('login'))
           <li class="nav-item">
@@ -88,35 +91,77 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>About this page</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can  it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+          <h2><strong>A PROPOS</strong></h2>
+          <h2><em>{{ ("Qui sommes-nous ?") }}</em></h2>
+          <p class="lead">{{ ("L’Office National de Formation Professionnelle (ONFP) est un établissement public à caractère industriel et commercial (EPIC) créé par la Loi n°86-44 du 11 Août 1986.") }}</p>
+          <p class="lead">{{ ("Ainsi, l’ONFP a pour mission de :") }}</p>
           <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+            <li>{{ ("Aider à mettre en œuvre les objectifs sectoriels du gouvernement et d’assister les organismes publics et privés dans la réalisation de leur action ;") }}</li>
+            <li>{{ ("Réaliser des études sur l’emploi, la qualification professionnelle, les moyens quantitatifs et qualitatifs de la formation professionnelle initiale et continue ;") }}</li>
+            <li>{{ ("Coordonner les interventions par branche professionnelle par action prioritaire en s’appuyant sur des structures existantes ou à créer ;") }}</li>
+            <li>{{ ("Coordonner l’action de formation professionnelle des organismes d’aides bilatérales ou multilatérales.") }}</li>
           </ul>
+          <h2><em>{{ ("La vision qui guide notre action") }}</em></h2>
+          {{ ("La qualification professionnelle est le levier le plus important pour l’amélioration de la productivité du travail, la réduction de la précarité de l’emploi et le positionnement fort de la formation professionnelle dans les enjeux nationaux.") }}
+          <h2><em>{{ ("Les valeurs qui sous-tendent notre fonctionnement") }}</em></h2>
+          {{ ("Nous portons en nous l’exigence scientifique et technique de la référence nationale en matière de formation professionnelle.") }}
+          <h2><em>{{ ("Le mandat assigné à l’ONFP") }}</em></h2>
+          {{ ("Doter le travailleur ou le demandeur d’emploi, notamment dans une optique d’auto emploi, où qu’il se trouve sur le territoire national, d’une qualification ou d’un titre professionnel qui lui permet, à la fois, d’occuper un emploi ou d’exercer une activité professionnelle selon les normes requises et de se promouvoir.") }}
         </div>
       </div>
     </div>
   </section>
-
   <section id="services" class="bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Services we offer</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+          <h2><strong>SERVICES</strong></h2>
+          {{--  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>  --}}
+          <h2><em>{{ ("Formation") }}</em></h2>
+          {{ ("C’est l’organisation d’actions et d’opérations de formation au bénéfice de cibles diversifiées pouvant être les branches professionnelles, les demandeurs d’emploi, les travailleurs, les entreprises, les collectivités, les organismes de l’état, etc. Ces formations s’inscrivent dans une perspective d’obtention d’une qualification professionnelle au regard des catégories professionnelles des conventions collectives de branches professionnelles. Ces formations de type modulaire sont sanctionnées par des attestations, des titres de qualification ou des titres professionnels. L’obtention de ces titres peut se faire par la voie de la Validation des Acquis de l’Expérience (VAE).") }}
+          <h2><em>{{ ("Documentation / Edition") }}</em></h2>
+          {{ ("L’ONFP produit et diffuse de la documentation et des supports techniques et pédagogiques sur la formation professionnelle. Il s’agit de la mise à la disposition du public de la documentation avec accès libre ou conditionné sous format physique ou électronique. Il s’agit également de l’édition et de la distribution de manuels et supports pédagogiques destinés aux apprenants ou hommes de métier en exercice.
+          L’ONFP offre la possibilité à des auteurs de faire éditer leur ouvrage dès lors que ceux ci traitent des questions liées à la formation professionnelle.") }}
+          <h2><em>{{ ("Construction") }}</em></h2>
+          {{ ("Ce service consiste à la maitrise d’ouvrage de construction de centres de formation professionnelle ou la maitrise d’ouvrage déléguée à la demande de ministères, d’organismes, de projets nationaux, de coopération ou à la demande d’organismes privés tels que les branches, les ONG, les associations et les entreprises.") }}
+          <h2><em>{{ ("Recherche") }}</em></h2>
+          {{ ("Il s’agit de la production ou de la diffusion de connaissances et de savoirs sur la formation professionnelle. Ceci se traduit par l’appui à des thèses ou des mémoires portant sur des sujets en lien avec les problématiques de la formation professionnelle. Il s’agit également de mise en oeuvre d’études, de mise au point de méthodes et d’expérimentation de moyens et équipements pédagogiques. Les résultats de recherche sont destinés notamment à alimenter les politiques publiques et les programmes des branches professionnelles.") }}
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="cibles">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Contact us</h2>
+          <h2><strong>NOS CIBLES</strong></h2>
+          {{--  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>  --}}
+          <h2><em>{{ ("Nos cibles ou bénéficiaires:") }}</em></h2>
+          <li>{{ ("Les travailleurs de tous secteurs (public, privé, moderne, informel, monde rural, artisanat, etc.) ;") }}</li>
+          <li>{{ ("Les individus ou groupe d’individus (en particulier les jeunes et les femmes) à la recherche d’un emploi ou porteurs de projets d’insertion ;") }}</li>
+          <li>{{ ("Les entreprises de tous secteurs ;") }}</li>
+          <li>{{ ("Les formateurs ;") }}</li>
+          <li>{{ ("Les groupements féminins ;") }}</li>
+          <li>{{ ("Les Groupements d’intérêt Economique (GIE) ;") }}</li>
+          <li>{{ ("Les associations et ONG ;") }}</li>
+          <li>{{ ("Les organisations professionnelles ;") }}</li>
+          <li>{{ ("L’Etat et les collectivités locales ;") }}</li>
+          <li>{{ ("Les chambres consulaires ;") }}</li>
+          <li>{{ ("Les organisations de travailleurs ;") }}</li>
+          <li>{{ ("Les partenaires internationaux intervenant dans le secteur de la formation professionnelle ou qualifiante dans le cadre de l’exécution de leurs programmes spécifiques ;") }}</li>
+          <li>{{ ("Les chercheurs dans le domaine de la formation et de l’insertion professionnelle ;") }}</li>
+          <li>{{ ("Les programmes d’investissements économiques et de promotion de l’emploi.") }}</li>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>CONTACTS</h2>
           <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
         </div>
       </div>
