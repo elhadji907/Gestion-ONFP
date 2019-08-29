@@ -33,7 +33,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm border-bottom-success">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'ONFP') }}
+                    <img src="{{ asset('img/ONFP.png') }}" class="pr-3" width="50px" style="border-right: solid 1px #333; "/>
+                    <span class="pl-3">{{ config('app.name', 'ONFP') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

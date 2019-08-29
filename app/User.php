@@ -70,6 +70,7 @@ class User extends  Authenticatable
 		'uuid',
 		'firstname',
 		'name',
+		'username',
 		'telephone',
 		'email',
 		'sexe',
@@ -130,5 +131,10 @@ class User extends  Authenticatable
 	public function operateurs()
 	{
 		return $this->hasMany(\App\Operateur::class, 'users_id');
+	}
+
+
+	public function getRouteKeyName(){
+		return 'username';
 	}
 }

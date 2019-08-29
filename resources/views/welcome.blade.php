@@ -36,7 +36,12 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-dark fixed-top navbar-light bg-white shadow-sm border-bottom-success" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">ACCUEIL</a>
+      {{-- <a class="navbar-brand js-scroll-trigger" href="#page-top">ACCUEIL</a> --}}
+      <a class="navbar-brand" href="#page-top">
+        <img src="{{ asset('img/ONFP.png') }}" class="pr-3" width="50px" style="border-right: solid 1px #333; "/>
+
+        <span class="pl-3">{{ config('app.name', 'ONFP') }}</span>
+    </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

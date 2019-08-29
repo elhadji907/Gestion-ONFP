@@ -64,12 +64,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephone" type="text" class="form-control form-control-user @error('telephone') is-invalid @enderror" name="telephone" placeholder="Votre telephone" value="{{ old('telephone') }}" autocomplete="telephone" autofocus>
+                                <input id="username" type="text" class="form-control form-control-user @error('username') is-invalid @enderror" name="username" placeholder="Votre username" value="{{ old('username') }}" autocomplete="username" autofocus>
 
-                                @error('telephone')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -22,5 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/accueil', function () {
-    return view('layout.default');
+        return view('layout.default');
 });
+
+Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
