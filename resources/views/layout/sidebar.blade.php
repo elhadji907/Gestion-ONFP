@@ -76,7 +76,7 @@
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Écrans de connexion:</h6>
-      <a class="collapse-item text-truncate" style="max-width: 200px;" href="/OnfpGestion/public/profiles/{{ Auth::user()->username }}">
+      <a class="collapse-item text-truncate" style="max-width: 200px;" href="profiles/{{ Auth::user()->username }}">
           {{ Auth::user()->email }}
         </a>
       <!-- Authentication Links -->
