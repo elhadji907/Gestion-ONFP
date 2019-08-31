@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Aug 2019 18:12:44 +0000.
+ * Date: Fri, 30 Aug 2019 16:00:14 +0000.
  */
 
 namespace App;
@@ -22,7 +22,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\Commune $commune
- * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  *
  * @package App
  */
@@ -45,10 +44,5 @@ class Village extends Eloquent
 	public function commune()
 	{
 		return $this->belongsTo(\App\Commune::class, 'communes_id');
-	}
-
-	public function beneficiaires()
-	{
-		return $this->hasMany(\App\Beneficiaire::class);
 	}
 }

@@ -352,6 +352,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'firstname' => SnmG::getFirstName(),
         'name' => SnmG::getName(),
+        'username' => Str::random(5),
         'telephone' => $faker->phoneNumber,
         'email' => Str::random(5).".".$faker->safeEmail,
         'email_verified_at' => $faker->dateTimeBetween(),
@@ -780,7 +781,7 @@ $factory->define(App\Titre::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
+//use Faker\Generator as Faker;
 
 $factory->define(App\AgrementsType::class, function (Faker $faker) {
     return [
@@ -788,6 +789,76 @@ $factory->define(App\AgrementsType::class, function (Faker $faker) {
         'name' => $faker->name,
         'agrements_id' => function () {
             return factory(App\Agrement::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Pay::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'nom' => $faker->word,
+        'users_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+    ];
+});
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+/* 
+$factory->define(App\Gestionnaire::class, function (Faker\Generator $faker) {
+    $role_id=App\Role::where('name','Gestionnaire')->first()->id;
+    return [
+        'matricule' => "GEST".$faker->word,
+        'users_id' => function () use($role_id) {
+             return factory(App\User::class)->create(["roles_id"=>$role_id])->id;
+        },
+    ];
+});
+*/
+/* 
+$factory->define(App\Profile::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'titre' => $faker->word,
+        'description' => $faker->text,
+        'url' => $faker->url,
+        'users_id' => $faker->randomNumber(),
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+    ];
+}); */
+
+$factory->define(App\Profile::class, function (Faker\Generator $faker) {
+    $user_id= App\User::get()->last()->id;
+    return [
+        
+        'titre' =>"Mon Titre"." ".$faker->word,
+        'description' => "Ma Description"." ".$faker->text,
+        'url' => $faker->url.".sn",
+        // 'users_id' => $faker->randomNumber(),
+        'users_id' => function () use($user_id) {
+            return factory(App\Profile::class)->create(["users_id"=>$user_id])->id;
+        },
+    ];
+});
+
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Ville::class, function (Faker $faker) {
+    return [
+        'uuid' => $faker->uuid,
+        'nom' => $faker->word,
+        'chef_id' => $faker->randomNumber(),
+        'communes_id' => function () {
+            return factory(App\Commune::class)->create()->id;
         },
     ];
 });

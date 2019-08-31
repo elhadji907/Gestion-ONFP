@@ -10,30 +10,41 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Role
+ * Class Profile
  * 
  * @property int $id
  * @property string $uuid
- * @property string $name
+ * @property string $titre
+ * @property string $description
+ * @property string $url
+ * @property int $users_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property \App\User $user
  *
  * @package App
  */
-class Role extends Eloquent
+class Profile extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
+
+	protected $casts = [
+		'users_id' => 'int'
+	];
 
 	protected $fillable = [
 		'uuid',
-		'name'
+		'titre',
+		'description',
+		'url',
+		'users_id'
 	];
 
-	public function users()
+	public function user()
 	{
-		return $this->hasMany(\App\User::class, 'roles_id');
+		return $this->belongsTo('\App\User');
 	}
 }

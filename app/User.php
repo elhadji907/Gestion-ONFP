@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Aug 2019 18:12:44 +0000.
+ * Date: Fri, 30 Aug 2019 16:00:14 +0000.
  */
 
 namespace App;
@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * Class User
  * 
@@ -19,8 +18,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $uuid
  * @property string $firstname
  * @property string $name
- * @property string $telephone
+ * @property string $username
  * @property string $email
+ * @property string $telephone
  * @property string $sexe
  * @property \Carbon\Carbon $date_naissance
  * @property string $lieu_naissance
@@ -35,20 +35,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * 
  * @property \App\Role $role
  * @property \Illuminate\Database\Eloquent\Collection $administrateurs
- * @property \Illuminate\Database\Eloquent\Collection $agents
- * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
- * @property \Illuminate\Database\Eloquent\Collection $comptables
  * @property \Illuminate\Database\Eloquent\Collection $courriers
- * @property \Illuminate\Database\Eloquent\Collection $demandes
- * @property \Illuminate\Database\Eloquent\Collection $employees
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
- * @property \Illuminate\Database\Eloquent\Collection $operateurs
+ * @property \Illuminate\Database\Eloquent\Collection $pays
+ * @property \Illuminate\Database\Eloquent\Collection $profiles
  *
  * @package App
  */
-class User extends  Authenticatable
+class User extends Authenticatable
 {
-	use Notifiable;
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;
 
@@ -71,8 +66,8 @@ class User extends  Authenticatable
 		'firstname',
 		'name',
 		'username',
-		'telephone',
 		'email',
+		'telephone',
 		'sexe',
 		'date_naissance',
 		'lieu_naissance',
@@ -88,51 +83,30 @@ class User extends  Authenticatable
 		return $this->belongsTo(\App\Role::class, 'roles_id');
 	}
 
-	public function administrateurs()
+	public function administrateur()
 	{
-		return $this->hasMany(\App\Administrateur::class, 'users_id');
+		return $this->hasOne(\App\Administrateur::class, 'users_id');
 	}
 
-	public function agents()
+	public function courrier()
 	{
-		return $this->hasMany(\App\Agent::class, 'users_id');
+		return $this->hasOne(\App\Courrier::class, 'users_id');
 	}
 
-	public function beneficiaires()
+	public function gestionnaire()
 	{
-		return $this->hasMany(\App\Beneficiaire::class, 'users_id');
+		return $this->hasOne(\App\Gestionnaire::class, 'users_id');
 	}
 
-	public function comptables()
+	public function pay()
 	{
-		return $this->hasMany(\App\Comptable::class, 'users_id');
+		return $this->hasOne(\App\Pay::class, 'users_id');
 	}
 
-	public function courriers()
+	public function profile()
 	{
-		return $this->hasMany(\App\Courrier::class, 'users_id');
+		return $this->hasOne(\App\Profile::class, 'users_id');
 	}
-
-	public function demandes()
-	{
-		return $this->hasMany(\App\Demande::class, 'users_id');
-	}
-
-	public function employees()
-	{
-		return $this->hasMany(\App\Employee::class, 'users_id');
-	}
-
-	public function gestionnaires()
-	{
-		return $this->hasMany(\App\Gestionnaire::class, 'users_id');
-	}
-
-	public function operateurs()
-	{
-		return $this->hasMany(\App\Operateur::class, 'users_id');
-	}
-
 
 	public function getRouteKeyName(){
 		return 'username';

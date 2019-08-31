@@ -10,30 +10,39 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Role
+ * Class Ville
  * 
  * @property int $id
  * @property string $uuid
- * @property string $name
+ * @property string $nom
+ * @property int $chef_id
+ * @property int $communes_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property \App\Commune $commune
  *
  * @package App
  */
-class Role extends Eloquent
+class Ville extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
-		'uuid',
-		'name'
+	protected $casts = [
+		'chef_id' => 'int',
+		'communes_id' => 'int'
 	];
 
-	public function users()
+	protected $fillable = [
+		'uuid',
+		'nom',
+		'chef_id',
+		'communes_id'
+	];
+
+	public function commune()
 	{
-		return $this->hasMany(\App\User::class, 'roles_id');
+		return $this->belongsTo(\App\Commune::class, 'communes_id');
 	}
 }

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Aug 2019 18:12:44 +0000.
+ * Date: Fri, 30 Aug 2019 16:00:14 +0000.
  */
 
 namespace App;
@@ -21,10 +21,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\User $user
- * @property \Illuminate\Database\Eloquent\Collection $agrements
- * @property \Illuminate\Database\Eloquent\Collection $beneficiaires
  * @property \Illuminate\Database\Eloquent\Collection $courriers
- * @property \Illuminate\Database\Eloquent\Collection $formation_personnels
  *
  * @package App
  */
@@ -48,23 +45,8 @@ class Gestionnaire extends Eloquent
 		return $this->belongsTo(\App\User::class, 'users_id');
 	}
 
-	public function agrements()
-	{
-		return $this->hasMany(\App\Agrement::class, 'gestionnaires_id');
-	}
-
-	public function beneficiaires()
-	{
-		return $this->hasMany(\App\Beneficiaire::class, 'gestionnaires_id');
-	}
-
 	public function courriers()
 	{
 		return $this->hasMany(\App\Courrier::class, 'gestionnaires_id');
-	}
-
-	public function formation_personnels()
-	{
-		return $this->hasMany(\App\FormationPersonnel::class, 'gestionnaires_id');
 	}
 }

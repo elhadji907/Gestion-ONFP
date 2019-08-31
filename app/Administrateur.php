@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Aug 2019 18:12:44 +0000.
+ * Date: Fri, 30 Aug 2019 16:00:14 +0000.
  */
 
 namespace App;
@@ -21,7 +21,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\User $user
- * @property \Illuminate\Database\Eloquent\Collection $operateurs
  *
  * @package App
  */
@@ -42,10 +41,5 @@ class Administrateur extends Eloquent
 	public function user()
 	{
 		return $this->belongsTo(\App\User::class, 'users_id');
-	}
-
-	public function operateurs()
-	{
-		return $this->hasMany(\App\Operateur::class, 'administrateurs_id');
 	}
 }
