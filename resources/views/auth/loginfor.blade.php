@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Senforage</title>
+    <title>ONFP APP</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,7 +57,7 @@
               <p>&copy;
                  {{-- <a href="https://getbootstrap.com/"> 
                   < / ></a>, by <a href="#">Dev</a> --}}
-                  ONFP-I3T 2019.
+                  ONFP 2019.
                 </p>
             </div>
           </footer>
