@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 30 Aug 2019 16:00:14 +0000.
+ * Date: Sun, 01 Sep 2019 00:00:38 +0000.
  */
 
 namespace App;
@@ -45,6 +45,6 @@ class Profile extends Eloquent
 
 	public function user()
 	{
-		return $this->belongsTo('\App\User');
+		return $this->belongsTo(\App\User::class, 'users_id');
 	}
 }

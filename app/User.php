@@ -2,15 +2,15 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 30 Aug 2019 16:00:14 +0000.
+ * Date: Sun, 01 Sep 2019 00:00:38 +0000.
  */
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  * Class User
  * 
@@ -38,6 +38,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Database\Eloquent\Collection $courriers
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
  * @property \Illuminate\Database\Eloquent\Collection $pays
+ * @property \Illuminate\Database\Eloquent\Collection $postes
  * @property \Illuminate\Database\Eloquent\Collection $profiles
  *
  * @package App
@@ -101,6 +102,11 @@ class User extends Authenticatable
 	public function pay()
 	{
 		return $this->hasOne(\App\Pay::class, 'users_id');
+	}
+
+	public function postes()
+	{
+		return $this->hasMany(\App\Poste::class, 'users_id')->orderBy('created_at', 'DESC');
 	}
 
 	public function profile()

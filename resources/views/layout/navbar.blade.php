@@ -134,6 +134,10 @@
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{{ route('posts.create') }}">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+             {{(" Créer un post")}}
+            </a>
           <a class="dropdown-item" href="profiles/{{ Auth::user()->username }}">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
            {{(" Profil")}}

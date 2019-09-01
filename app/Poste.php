@@ -10,22 +10,22 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Gestionnaire
+ * Class Poste
  * 
  * @property int $id
  * @property string $uuid
- * @property string $matricule
+ * @property string $legende
+ * @property string $image
  * @property int $users_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\User $user
- * @property \Illuminate\Database\Eloquent\Collection $courriers
  *
  * @package App
  */
-class Gestionnaire extends Eloquent
+class Poste extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;
@@ -34,19 +34,17 @@ class Gestionnaire extends Eloquent
 		'users_id' => 'int'
 	];
 
+	protected $guarded = [];
+
 	protected $fillable = [
 		'uuid',
-		'matricule',
+		'legende',
+		'image',
 		'users_id'
 	];
 
 	public function user()
 	{
 		return $this->belongsTo(\App\User::class, 'users_id');
-	}
-
-	public function courriers()
-	{
-		return $this->hasMany(\App\Courrier::class, 'gestionnaires_id');
 	}
 }
