@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.default')
 
 @section('content')
 <div class="container">
@@ -25,8 +25,7 @@
                         </div> 
                         <div class="form-group">
                             <label for="description">Description</label>                            
-                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description" autofocus>
-                                    {{ old('description') ?? $user->profile->description }}
+                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description" autofocus>{{ old('description') ?? $user->profile->description }}
                                 </textarea>
                                
                                 @error('description')
