@@ -26,9 +26,12 @@ Route::get('/accueil', function () {
 });
 
 Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
+Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
+Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
-Route::get('posts/create', 'PostesController@create')->name('posts.create');
-Route::post('posts', 'PostesController@store')->name('posts.store');
+Route::get('postes/create', 'PostesController@create')->name('postes.create');
+Route::post('postes', 'PostesController@store')->name('postes.store');
+Route::get('postes/{poste}', 'PostesController@show')->name('postes.show');
 
 
 

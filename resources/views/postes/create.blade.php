@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.default')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Créer un post') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('postes.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">

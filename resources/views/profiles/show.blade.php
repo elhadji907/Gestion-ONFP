@@ -17,6 +17,7 @@
                 <div class="mr-3"><strong>24 </strong> Abonnés</div>
                 <div class="mr-3"><strong>56 </strong> Abonnements</div>
             </div>
+            <a href="{{ route('profiles.edit', ['username'  => $user->username]) }}" class="btn btn-outline-secondary mt-3">Modifier mon profile</a>
             <div class="mt-3">
                 <div class="mr-3">{{ $user->profile->titre }}</div>
                 <div class="mr-3">{{ $user->profile->description }}</div>
@@ -28,7 +29,7 @@
     <div class="mt-5 row">
         @foreach ($user->postes as $post)
         <div class="col-4 pb-3">
-            <a href="#"><img src="{{ asset('storage').'/'.$post->image }}" class="w-100"/></a>
+            <a href="{{ route('postes.show', ['poste' => $post->id ]) }}"><img src="{{ asset('storage').'/'.$post->image }}" class="w-100"/></a>
         </div>            
         @endforeach
     </div>

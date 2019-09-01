@@ -35,7 +35,7 @@ class PostesController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('postes.create');
     }
 
     /**
@@ -74,7 +74,9 @@ class PostesController extends Controller
      */
     public function show(Poste $poste)
     {
-        //
+        //dd($poste);
+
+        return view('postes.show', compact('poste'));
     }
 
     /**

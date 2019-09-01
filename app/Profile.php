@@ -35,6 +35,8 @@ class Profile extends Eloquent
 		'users_id' => 'int'
 	];
 
+	protected $guarded = [];
+	
 	protected $fillable = [
 		'uuid',
 		'titre',
