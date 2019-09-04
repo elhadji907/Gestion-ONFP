@@ -29,6 +29,9 @@ Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
 Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
+Route::get('courriers', 'CourriersController@show')->name('courriers.show');
+Route::get('courriers/arrives', 'ArrivesController@show')->name('arrives.show');
+
 Route::get('postes/create', 'PostesController@create')->name('postes.create');
 Route::post('postes', 'PostesController@store')->name('postes.store');
 Route::get('postes/{poste}', 'PostesController@show')->name('postes.show');

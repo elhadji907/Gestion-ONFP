@@ -95,7 +95,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{ route('courriers.show') }}">
         <span data-feather="layers"></span>
       <span>Administrer les courriers</span>
     </a>
