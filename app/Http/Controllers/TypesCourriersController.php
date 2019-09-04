@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\TypesCourrier;
-use App\Arrive;
 use Illuminate\Http\Request;
 
-class ArrivesController extends Controller
+class TypesCourriersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +24,6 @@ class ArrivesController extends Controller
      */
     public function create()
     {
-        $types = TypesCourrier::get();
-        return view('courriers.arrives.create',compact('types'));
        
     }
 
@@ -43,21 +41,21 @@ class ArrivesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Arrive  $arrive
+     * @param  \App\TypesCourrier  $typesCourrier
      * @return \Illuminate\Http\Response
      */
-    public function show(Arrive $arrive)
+    public function show(TypesCourrier $typesCourrier)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Arrive  $arrive
+     * @param  \App\TypesCourrier  $typesCourrier
      * @return \Illuminate\Http\Response
      */
-    public function edit(Arrive $arrive)
+    public function edit(TypesCourrier $typesCourrier)
     {
         //
     }
@@ -66,10 +64,10 @@ class ArrivesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Arrive  $arrive
+     * @param  \App\TypesCourrier  $typesCourrier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Arrive $arrive)
+    public function update(Request $request, TypesCourrier $typesCourrier)
     {
         //
     }
@@ -77,10 +75,10 @@ class ArrivesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Arrive  $arrive
+     * @param  \App\TypesCourrier  $typesCourrier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Arrive $arrive)
+    public function destroy(TypesCourrier $typesCourrier)
     {
         //
     }

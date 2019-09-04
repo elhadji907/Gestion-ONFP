@@ -26,9 +26,9 @@
             <div class="form-group col-md-3">
                 <label for="type">Type</label>
                 <select name="type" id="type" class="form-control selectpicker">
-                   {{--  @foreach() --}}
-                        <option value="#"></option>
-                  {{--   @endforeach --}}
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
                 </select>
                 <div class="invalid-feedback">
                     {{ $errors->first('type') }}

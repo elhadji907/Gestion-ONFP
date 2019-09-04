@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArrivesTable extends Migration
+class CreateTypesCourriersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'arrives';
+    public $tableName = 'types_courriers';
 
     /**
      * Run the migrations.
-     * @table arrives
+     * @table types_courriers
      *
      * @return void
      */
@@ -23,19 +23,10 @@ class CreateArrivesTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 200)->nullable();
             $table->char('uuid', 36);
-            $table->unsignedInteger('courriers_id');
-
-            $table->index(["courriers_id"], 'fk_categories_courriers1_idx');
+            $table->string('name', 200);
             $table->softDeletes();
             $table->nullableTimestamps();
-
-
-            $table->foreign('courriers_id', 'fk_categories_courriers1_idx')
-                ->references('id')->on('courriers')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Wed, 04 Sep 2019 22:12:08 +0000.
  */
 
 namespace App;
@@ -23,11 +23,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $date
  * @property int $gestionnaires_id
  * @property int $users_id
+ * @property int $types_courriers_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\Gestionnaire $gestionnaire
+ * @property \App\TypesCourrier $types_courrier
  * @property \App\User $user
  * @property \Illuminate\Database\Eloquent\Collection $arrives
  * @property \Illuminate\Database\Eloquent\Collection $departs
@@ -38,10 +40,12 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Courrier extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'gestionnaires_id' => 'int',
-		'users_id' => 'int'
+		'users_id' => 'int',
+		'types_courriers_id' => 'int'
 	];
 
 	protected $dates = [
@@ -58,12 +62,18 @@ class Courrier extends Eloquent
 		'statut',
 		'date',
 		'gestionnaires_id',
-		'users_id'
+		'users_id',
+		'types_courriers_id'
 	];
 
 	public function gestionnaire()
 	{
 		return $this->belongsTo(\App\Gestionnaire::class, 'gestionnaires_id');
+	}
+
+	public function types_courrier()
+	{
+		return $this->belongsTo(\App\TypesCourrier::class, 'types_courriers_id');
 	}
 
 	public function user()

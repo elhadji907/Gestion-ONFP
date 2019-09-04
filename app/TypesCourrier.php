@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Wed, 04 Sep 2019 22:11:53 +0000.
  */
 
 namespace App;
@@ -10,7 +10,7 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Role
+ * Class TypesCourrier
  * 
  * @property int $id
  * @property string $uuid
@@ -19,11 +19,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property \Illuminate\Database\Eloquent\Collection $courriers
  *
  * @package App
  */
-class Role extends Eloquent
+class TypesCourrier extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;
@@ -33,8 +33,8 @@ class Role extends Eloquent
 		'name'
 	];
 
-	public function users()
+	public function courriers()
 	{
-		return $this->hasMany(\App\User::class, 'roles_id');
+		return $this->hasMany(\App\Courrier::class, 'types_courriers_id');
 	}
 }

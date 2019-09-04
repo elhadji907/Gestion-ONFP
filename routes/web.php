@@ -30,7 +30,7 @@ Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edi
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
 Route::get('courriers', 'CourriersController@show')->name('courriers.show');
-Route::get('courriers/arrives', 'ArrivesController@show')->name('arrives.show');
+Route::get('courriers/arrives', 'ArrivesController@create')->name('arrives.create');
 
 Route::get('postes/create', 'PostesController@create')->name('postes.create');
 Route::post('postes', 'PostesController@store')->name('postes.store');

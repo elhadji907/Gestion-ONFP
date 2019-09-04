@@ -35,10 +35,13 @@
         feather.replace()
     </script>
 
-    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    {{-- <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/4/tinymce.min.js' referrerpolicy="origin"></script> --}}
+    <script src="/path/to/tinymce.min.js"></script>
+
 <script>
 tinymce.init({
   selector: '#textarea',
   language: 'fr_FR',
+  plugins: 'link'
 });
 </script>
