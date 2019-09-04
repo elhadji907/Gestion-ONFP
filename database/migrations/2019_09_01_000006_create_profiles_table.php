@@ -27,6 +27,7 @@ class CreateProfilesTable extends Migration
             $table->string('titre', 200);
             $table->text('description')->nullable();
             $table->string('url', 200)->nullable();
+            $table->string('image', 200)->nullable();
             $table->unsignedInteger('users_id');
 
             $table->index(["users_id"], 'fk_profiles_users1_idx');

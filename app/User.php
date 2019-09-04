@@ -49,8 +49,21 @@ class User extends Authenticatable
 	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
-		'roles_id' => 'int'
+		'roles_id' => 'int',
+		'email_verified_at' => 'datetime',
 	];
+
+	protected static function boot(){
+		parent::boot();
+		static::created(function ($user){
+			$user->profile()->create([
+				'titre'	=>	'Profile de ' .$user->username,
+				'description'	=>	'',
+				'url'	=>	''
+			]);
+		});
+	} 
+	
 
 	protected $dates = [
 		'date_naissance',
@@ -78,6 +91,12 @@ class User extends Authenticatable
 		'roles_id',
 		'remember_token'
 	];
+
+
+	public function getRouteKeyName(){
+		return 'username';
+	}
+
 
 	public function role()
 	{
@@ -114,7 +133,4 @@ class User extends Authenticatable
 		return $this->hasOne(\App\Profile::class, 'users_id');
 	}
 
-	public function getRouteKeyName(){
-		return 'username';
-	}
 }

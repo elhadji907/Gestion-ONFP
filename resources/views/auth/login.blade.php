@@ -16,7 +16,7 @@
             <div class="card">
                 
                 <div class="card card-header text-center bg-gradient-success">
-                        <h1 class="h4 text-gray-900 mb-4">{{ __('CONNEXION') }}</h1>
+                        <h1 class="h4 text-white mb-0"><span data-feather="log-in"></span> CONNEXION</h1>
                 </div>
 
                 <div class="card-body">

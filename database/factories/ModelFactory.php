@@ -841,6 +841,7 @@ $factory->define(App\Profile::class, function (Faker\Generator $faker) {
         'titre' =>"Mon Titre"." ".$faker->word,
         'description' => "Ma Description"." ".$faker->text,
         'url' => $faker->url.".sn",
+        'image' => "default.png",
         // 'users_id' => $faker->randomNumber(),
         'users_id' => function () use($user_id) {
             return factory(App\Profile::class)->create(["users_id"=>$user_id])->id;

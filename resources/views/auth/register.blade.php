@@ -15,7 +15,7 @@
                 @endif
             <div class="card">
                 <div class="card card-header text-center bg-gradient-success">
-                    <h1 class="h4 text-gray-900 mb-4">{{ __('INSCRIPTION') }}</h1>
+                    <h1 class="h4 text-white mb-0"><span data-feather="info"></span> INSCRIPTION</h1>
                 </div>
 
                 <div class="card-body">

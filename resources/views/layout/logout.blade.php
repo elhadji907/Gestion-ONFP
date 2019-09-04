@@ -9,10 +9,11 @@
         </div>
         <div class="modal-body">{{ ("Êtes-vous sûr de bien vouloir se déconnecter de la session en cours ?") }}</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal"><span data-feather="x"></span>Annuler</button>
           <a class="btn btn-primary" href="{{ route('logout') }}"  onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-          {{ __('Oui') }}</a>
+          <span data-feather="log-out"></span>
+          Se déconnecter</a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
           </form>

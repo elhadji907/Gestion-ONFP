@@ -18,6 +18,16 @@
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Tableau de bord</span></a>
 </li>
+
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/home') }}">
+    <span data-feather="home"></span>
+    <span>Accueil</span></a>
+</li>
 {{--  
 <!-- Divider -->
 <hr class="sidebar-divider">
@@ -60,14 +70,56 @@
 </li>  --}}
 
 <!-- Divider -->
-<hr class="sidebar-divider">
+<hr class="sidebar-divider my-0">
 {{--  
 <!-- Heading -->
 <div class="sidebar-heading">
   Addons
 </div>
   --}}
+  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
+      <span data-feather="settings"></span>
+    </a>
+      <span>Gérer mon application</span>
+      <a class="d-flex align-items-center text-white" href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
+        <span data-feather="plus-circle"></span>
+      </a>
+  </h6>
 <!-- Nav Item - Pages Collapse Menu -->
+
+<li class="nav-item">
+    <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+      <span>Administrer les utilisateurs</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+      <span>Administrer les courriers</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+      <span>Administrer les demandes</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+      <span>Administrer les formations</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+      <span>Administrer les opérateurs</span>
+    </a>
+  </li>
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
     <i class="fas fa-fw fa-folder"></i>
@@ -76,8 +128,9 @@
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Écrans de connexion:</h6>
-      <a class="collapse-item text-truncate" style="max-width: 200px;"  href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
-          {{ Auth::user()->email }}
+      <a class="collapse-item text-truncate" style="max-width: 150px;"  href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
+          <span data-feather="mail"></span>  
+        {{ Auth::user()->email }}
         </a>
       <!-- Authentication Links -->
       @guest
