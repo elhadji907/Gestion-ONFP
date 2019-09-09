@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 /* $factory->define(App\Administrateur::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'users_id' => function () {
             return factory(App\User::class)->create()->id;
@@ -35,7 +35,7 @@ $factory->define(App\Administrateur::class, function (Faker\Generator $faker) {
 
 /* $factory->define(App\Agent::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'users_id' => function () {
             return factory(App\User::class)->create()->id;
@@ -59,7 +59,7 @@ $factory->define(App\Agent::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Agrement::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'details' => $faker->word,
         'compteurs_id' => function () {
             return factory(App\Operateur::class)->create()->id;
@@ -75,7 +75,7 @@ $factory->define(App\Agrement::class, function (Faker $faker) {
 
 $factory->define(App\Arrondissement::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'departements_id' => function () {
             return factory(App\Departement::class)->create()->id;
@@ -88,7 +88,7 @@ $factory->define(App\Arrondissement::class, function (Faker $faker) {
 
 $factory->define(App\Beneficiaire::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'cin' => $faker->word,
         'village_id' => function () {
@@ -122,7 +122,7 @@ $factory->define(App\BeneficiairesHasFormation::class, function (Faker $faker) {
 
 $factory->define(App\Commune::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'arrondissements_id' => function () {
             return factory(App\Arrondissement::class)->create()->id;
@@ -135,7 +135,7 @@ $factory->define(App\Commune::class, function (Faker $faker) {
 
 $factory->define(App\Comptable::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'users_id' => function () {
             return factory(App\User::class)->create()->id;
@@ -148,7 +148,7 @@ $factory->define(App\Comptable::class, function (Faker $faker) {
 
 $factory->define(App\Departement::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'regions_id' => function () {
             return factory(App\Region::class)->create()->id;
@@ -161,7 +161,7 @@ $factory->define(App\Departement::class, function (Faker $faker) {
 
 $factory->define(App\Domaine::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -185,7 +185,7 @@ $factory->define(App\DomainesHasOperateur::class, function (Faker $faker) {
 
 $factory->define(App\Facture::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'date_limite' => $faker->dateTime(),
         'details' => $faker->word,
         'montant' => $faker->randomFloat(),
@@ -199,7 +199,7 @@ $factory->define(App\Facture::class, function (Faker $faker) {
 
 $factory->define(App\Formation::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'date' => $faker->dateTime(),
         'valeur' => $faker->word,
         'compteurs_id' => function () {
@@ -220,7 +220,7 @@ $factory->define(App\Formation::class, function (Faker $faker) {
 
 /* $factory->define(App\Gestionnaire::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'users_id' => function () {
             return factory(App\User::class)->create()->id;
@@ -244,7 +244,7 @@ $factory->define(App\Gestionnaire::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Module::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'domaines_id' => function () {
             return factory(App\Domaine::class)->create()->id;
@@ -271,7 +271,7 @@ $factory->define(App\ModulesHasOperateur::class, function (Faker $faker) {
 
 $factory->define(App\Operateur::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero_agrement' => $faker->word,
         'administrateurs_id' => function () {
             return factory(App\Administrateur::class)->create()->id;
@@ -284,7 +284,7 @@ $factory->define(App\Operateur::class, function (Faker $faker) {
 
 $factory->define(App\Region::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
     ];
 });
@@ -294,7 +294,7 @@ $factory->define(App\Region::class, function (Faker $faker) {
 
 $factory->define(App\Reglement::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'date' => $faker->dateTime(),
         'montant' => $faker->randomFloat(),
         'types_id' => function () {
@@ -314,7 +314,7 @@ $factory->define(App\Reglement::class, function (Faker $faker) {
 
 $factory->define(App\Role::class, function (Faker\Generator $faker) {
     return [
-       /*  'uuid' => $faker->uuid, */
+    //    /*  'uuid' => $faker->uuid, */
         'name' => $faker->name,
     ];
 });
@@ -324,7 +324,7 @@ $factory->define(App\Role::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Type::class, function (Faker $faker) {
     return [
-       /*  'uuid' => $faker->uuid, */
+    //    /*  'uuid' => $faker->uuid, */
         'name' => $faker->name,
     ];
 });
@@ -334,7 +334,7 @@ $factory->define(App\Type::class, function (Faker $faker) {
 
 /* $factory->define(App\User::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'firstname' => $faker->firstName,
         'name' => $faker->name,
         'telephone' => $faker->word,
@@ -352,7 +352,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'firstname' => SnmG::getFirstName(),
         'name' => SnmG::getName(),
-        'username' => Str::random(5),
+        'username' => Str::random(7),
         'telephone' => $faker->phoneNumber,
         'email' => Str::random(5).".".$faker->safeEmail,
         'email_verified_at' => $faker->dateTimeBetween(),
@@ -368,7 +368,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Village::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'chef_id' => $faker->randomNumber(),
         'communes_id' => function () {
@@ -382,7 +382,7 @@ $factory->define(App\Village::class, function (Faker $faker) {
 
 $factory->define(App\Category::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
@@ -395,7 +395,7 @@ $factory->define(App\Category::class, function (Faker $faker) {
 
 $factory->define(App\Convention::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -405,7 +405,7 @@ $factory->define(App\Convention::class, function (Faker $faker) {
 
 $factory->define(App\Courrier::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'date' => $faker->dateTime(),
         'details' => $faker->word,
@@ -423,7 +423,7 @@ $factory->define(App\Courrier::class, function (Faker $faker) {
 
 $factory->define(App\Detf::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -433,7 +433,7 @@ $factory->define(App\Detf::class, function (Faker $faker) {
 
 $factory->define(App\Employee::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'matricule' => $faker->word,
         'cin' => $faker->word,
         'users_id' => function () {
@@ -450,7 +450,7 @@ $factory->define(App\Employee::class, function (Faker $faker) {
 
 $factory->define(App\Quartier::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'chef_id' => $faker->randomNumber(),
         'communes_id' => function () {
@@ -464,7 +464,7 @@ $factory->define(App\Quartier::class, function (Faker $faker) {
 
 $factory->define(App\Antenne::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'sigle' => $faker->word,
         'courriers_id' => function () {
@@ -478,7 +478,7 @@ $factory->define(App\Antenne::class, function (Faker $faker) {
 
 $factory->define(App\Arrife::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
         },
@@ -490,7 +490,7 @@ $factory->define(App\Arrife::class, function (Faker $faker) {
 
 $factory->define(App\Demande::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'lieux_id' => function () {
             return factory(App\Lieux::class)->create()->id;
@@ -531,7 +531,7 @@ $factory->define(App\DemandesHasModule::class, function (Faker $faker) {
 
 $factory->define(App\Depart::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
         },
@@ -543,7 +543,7 @@ $factory->define(App\Depart::class, function (Faker $faker) {
 
 $factory->define(App\Direction::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'sigle' => $faker->word,
         'courriers_id' => function () {
@@ -557,7 +557,7 @@ $factory->define(App\Direction::class, function (Faker $faker) {
 
 $factory->define(App\Disponibilite::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'mois' => $faker->word,
     ];
 });
@@ -567,7 +567,7 @@ $factory->define(App\Disponibilite::class, function (Faker $faker) {
 
 $factory->define(App\Institution::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -577,7 +577,7 @@ $factory->define(App\Institution::class, function (Faker $faker) {
 
 $factory->define(App\Interne::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
         },
@@ -589,7 +589,7 @@ $factory->define(App\Interne::class, function (Faker $faker) {
 
 $factory->define(App\Lieux::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -599,7 +599,7 @@ $factory->define(App\Lieux::class, function (Faker $faker) {
 
 $factory->define(App\Niveau::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -623,7 +623,7 @@ $factory->define(App\OperateursHasNiveaux::class, function (Faker $faker) {
 
 $factory->define(App\Programme::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'duree' => $faker->word,
     ];
@@ -634,7 +634,7 @@ $factory->define(App\Programme::class, function (Faker $faker) {
 
 $factory->define(App\Secteur::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
 });
@@ -644,7 +644,7 @@ $factory->define(App\Secteur::class, function (Faker $faker) {
 
 $factory->define(App\Service::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'sigle' => $faker->word,
         'courriers_id' => function () {
@@ -658,7 +658,7 @@ $factory->define(App\Service::class, function (Faker $faker) {
 
 $factory->define(App\Attestation::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'name' => $faker->name,
         'formations_id' => function () {
@@ -700,7 +700,7 @@ $factory->define(App\EmployeesHasFormationPersonnel::class, function (Faker $fak
 
 $factory->define(App\Evaluation::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'name' => $faker->name,
         'date' => $faker->dateTime(),
@@ -715,7 +715,7 @@ $factory->define(App\Evaluation::class, function (Faker $faker) {
 
 $factory->define(App\FormationPersonnel::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'theme' => $faker->word,
         'name' => $faker->name,
@@ -738,7 +738,7 @@ $factory->define(App\FormationPersonnel::class, function (Faker $faker) {
 
 $factory->define(App\Mission::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'name' => $faker->name,
         'account' => $faker->word,
@@ -769,7 +769,7 @@ $factory->define(App\MissionsHasEmployee::class, function (Faker $faker) {
 
 $factory->define(App\Titre::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
         'name' => $faker->name,
         'lieu' => $faker->word,
@@ -781,11 +781,11 @@ $factory->define(App\Titre::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-//use Faker\Generator as Faker;
+use Faker\Generator as Faker;
 
 $factory->define(App\AgrementsType::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'agrements_id' => function () {
             return factory(App\Agrement::class)->create()->id;
@@ -798,7 +798,7 @@ $factory->define(App\AgrementsType::class, function (Faker $faker) {
 
 $factory->define(App\Pay::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'users_id' => function () {
             return factory(App\User::class)->create()->id;
@@ -823,7 +823,7 @@ $factory->define(App\Gestionnaire::class, function (Faker\Generator $faker) {
 /* 
 $factory->define(App\Profile::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'titre' => $faker->word,
         'description' => $faker->text,
         'url' => $faker->url,
@@ -838,10 +838,10 @@ $factory->define(App\Profile::class, function (Faker\Generator $faker) {
     $user_id= App\User::get()->last()->id;
     return [
         
-        'titre' =>"Mon Titre"." ".$faker->word,
-        'description' => "Ma Description"." ".$faker->text,
-        'url' => $faker->url.".sn",
-        'image' => "default.png",
+        'titre' =>"Titre"." ".$faker->word,
+        'description' => "",
+        'url' => "",
+        'image' => "",
         // 'users_id' => $faker->randomNumber(),
         'users_id' => function () use($user_id) {
             return factory(App\Profile::class)->create(["users_id"=>$user_id])->id;
@@ -855,7 +855,7 @@ $factory->define(App\Profile::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Ville::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'nom' => $faker->word,
         'chef_id' => $faker->randomNumber(),
         'communes_id' => function () {
@@ -865,11 +865,11 @@ $factory->define(App\Ville::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-/* use Faker\Generator as Faker; */
+// /* use Faker\Generator as Faker; */
 
 $factory->define(App\Arrive::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'name' => $faker->name,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
@@ -878,11 +878,11 @@ $factory->define(App\Arrive::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-/* use Faker\Generator as Faker; */
+// /* use Faker\Generator as Faker; */
 
 $factory->define(App\Poste::class, function (Faker $faker) {
     return [
-        'uuid' => $faker->uuid,
+        // 'uuid' => $faker->uuid,
         'legende' => $faker->word,
         'image' => $faker->word,
         'users_id' => function () {
@@ -892,11 +892,11 @@ $factory->define(App\Poste::class, function (Faker $faker) {
 });
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-/* use Faker\Generator as Faker; */
+// /* use Faker\Generator as Faker; */
 
 $factory->define(App\TypesCourrier::class, function (Faker $faker) {
     return [
-        /* 'uuid' => $faker->uuid, */
+        // /* 'uuid' => $faker->uuid, */
         'name' => $faker->name,
     ];
 });

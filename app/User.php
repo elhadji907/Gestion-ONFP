@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Mon, 09 Sep 2019 13:12:02 +0000.
  */
 
 namespace App;
@@ -28,7 +28,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
  * @property int $roles_id
- * @property string $remember_token
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -57,13 +56,12 @@ class User extends Authenticatable
 		parent::boot();
 		static::created(function ($user){
 			$user->profile()->create([
-				'titre'	=>	'Profile de ' .$user->username,
+				'titre'	=>	'',
 				'description'	=>	'',
 				'url'	=>	''
 			]);
 		});
 	} 
-	
 
 	protected $dates = [
 		'date_naissance',
@@ -71,8 +69,7 @@ class User extends Authenticatable
 	];
 
 	protected $hidden = [
-		'password',
-		'remember_token'
+		'password'
 	];
 
 	protected $fillable = [
@@ -88,10 +85,8 @@ class User extends Authenticatable
 		'situation_familiale',
 		'email_verified_at',
 		'password',
-		'roles_id',
-		'remember_token'
+		'roles_id'
 	];
-
 
 	public function getRouteKeyName(){
 		return 'username';
@@ -125,12 +120,11 @@ class User extends Authenticatable
 
 	public function postes()
 	{
-		return $this->hasMany(\App\Poste::class, 'users_id')->orderBy('created_at', 'DESC');
+		return $this->hasMany(\App\Poste::class, 'users_id');
 	}
 
 	public function profile()
 	{
 		return $this->hasOne(\App\Profile::class, 'users_id');
 	}
-
 }

@@ -27,10 +27,13 @@ class ProfileController extends Controller
     {
         $this->authorize('update', $user->profile);
         $data = request()->validate([
-            'titre'   =>  'required',
-            'description'   =>  'required',
-            'url'   =>  'required|url',
-            'image'   =>  'sometimes|image|max:3000'
+            'firstname'        =>  'required|string|max:50',
+            'name'             =>  'required|string|max:50',
+            'date_naissance'   =>  'required|date',
+            'lieu_naissance'   =>  'required|string|max:50',
+            'telephone'        =>  'required|string|max:50',
+            'sexe'             =>  'required|string|max:50',
+            'image'            =>  'sometimes|image|max:3000'
 
         ]);
 
@@ -57,12 +60,19 @@ class ProfileController extends Controller
         $image = Image::make(public_path("/storage/{$imagePath}"))->fit(800, 800);
         $image->save();
 
-        auth()->user()->profile()->update([
-            'titre' => $data['titre'],
-            'description' => $data['description'],
-            'url' => $data['url'],
+           auth()->user()->profile->update([
             'image' => $imagePath
             ]);
+
+            auth()->user()->update([
+            'firstname' => $data['firstname'],
+            'name' => $data['name'],
+            'date_naissance' => $data['date_naissance'],
+            'lieu_naissance' => $data['lieu_naissance'],
+            'telephone' => $data['telephone'],
+            'sexe' => $data['sexe']
+            ]);
+
         }  else {
             auth()->user()->profile->update($data);
         }

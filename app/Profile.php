@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Mon, 09 Sep 2019 13:12:02 +0000.
  */
 
 namespace App;
@@ -17,6 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $titre
  * @property string $description
  * @property string $url
+ * @property string $image
  * @property int $users_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
@@ -34,14 +35,14 @@ class Profile extends Eloquent
 	protected $casts = [
 		'users_id' => 'int'
 	];
-
 	protected $guarded = [];
-	
+
 	protected $fillable = [
 		'uuid',
 		'titre',
 		'description',
 		'url',
+		'image',
 		'users_id'
 	];
 

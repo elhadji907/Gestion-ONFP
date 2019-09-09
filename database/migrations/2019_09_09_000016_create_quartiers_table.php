@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartsTable extends Migration
+class CreateQuartiersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'departs';
+    public $tableName = 'quartiers';
 
     /**
      * Run the migrations.
-     * @table departs
+     * @table quartiers
      *
      * @return void
      */
@@ -24,16 +24,17 @@ class CreateDepartsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('name', 200)->nullable();
-            $table->unsignedInteger('courriers_id');
+            $table->string('nom', 200)->nullable();
+            $table->integer('chef_id')->nullable();
+            $table->unsignedInteger('communes_id');
 
-            $table->index(["courriers_id"], 'fk_depart_courriers1_idx');
+            $table->index(["communes_id"], 'fk_villages_communes1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('courriers_id', 'fk_depart_courriers1_idx')
-                ->references('id')->on('courriers')
+            $table->foreign('communes_id', 'fk_villages_communes1_idx')
+                ->references('id')->on('communes')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

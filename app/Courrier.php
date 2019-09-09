@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 04 Sep 2019 22:12:08 +0000.
+ * Date: Mon, 09 Sep 2019 13:12:02 +0000.
  */
 
 namespace App;
@@ -17,7 +17,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $numero
  * @property string $name
  * @property string $types
- * @property string $description
+ * @property string $message
+ * @property string $destinataire
  * @property string $fichier
  * @property string $statut
  * @property \Carbon\Carbon $date
@@ -40,7 +41,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Courrier extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'gestionnaires_id' => 'int',
@@ -57,7 +57,8 @@ class Courrier extends Eloquent
 		'numero',
 		'name',
 		'types',
-		'description',
+		'message',
+		'destinataire',
 		'fichier',
 		'statut',
 		'date',

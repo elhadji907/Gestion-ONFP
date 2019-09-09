@@ -27,7 +27,8 @@ class CreateCourriersTable extends Migration
             $table->string('numero', 200);
             $table->string('name', 200)->nullable();
             $table->string('types', 200)->nullable();
-            $table->string('description', 200)->nullable();
+            $table->string('message', 200)->nullable();
+            $table->string('destinataire', 200)->nullable();
             $table->string('fichier', 200)->nullable();
             $table->string('statut', 200)->nullable();
             $table->timestamp('date')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Mon, 09 Sep 2019 13:12:02 +0000.
  */
 
 namespace App;
@@ -21,8 +21,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\Arrondissement $arrondissement
- * @property \Illuminate\Database\Eloquent\Collection $villages
- * @property \Illuminate\Database\Eloquent\Collection $villes
+ * @property \Illuminate\Database\Eloquent\Collection $quartiers
  *
  * @package App
  */
@@ -45,13 +44,8 @@ class Commune extends Eloquent
 		return $this->belongsTo(\App\Arrondissement::class, 'arrondissements_id');
 	}
 
-	public function villages()
+	public function quartiers()
 	{
-		return $this->hasMany(\App\Village::class, 'communes_id');
-	}
-
-	public function villes()
-	{
-		return $this->hasMany(\App\Ville::class, 'communes_id');
+		return $this->hasMany(\App\Quartier::class, 'communes_id');
 	}
 }

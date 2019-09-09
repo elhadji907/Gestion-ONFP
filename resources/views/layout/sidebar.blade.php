@@ -80,7 +80,7 @@
   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
       <span data-feather="settings"></span>
     </a>
-      <span>Gérer mon application</span>
+      <span>Gérer mon profil</span>
       <a class="d-flex align-items-center text-white" href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
         <span data-feather="plus-circle"></span>
       </a>
@@ -128,9 +128,8 @@
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Écrans de connexion:</h6>
-      <a class="collapse-item text-truncate" style="max-width: 150px;"  href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
-          <span data-feather="mail"></span>  
-        {{ Auth::user()->email }}
+      <a class="collapse-item"  href="{{ route('profiles.show', ['user'=>auth()->user()]) }}">
+        {{ str_limit(Auth::user()->email, 18, '...') }}
         </a>
       <!-- Authentication Links -->
       @guest
