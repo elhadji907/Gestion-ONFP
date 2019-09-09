@@ -27,7 +27,7 @@
                 <label for="type">Type</label>
                 <select name="type" id="type" class="form-control selectpicker">
                    {{--  @foreach() --}}
-                        <option value="#"></option>
+                    <option value="#"></option>
                   {{--   @endforeach --}}
                 </select>
                 <div class="invalid-feedback">
