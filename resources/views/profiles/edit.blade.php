@@ -37,7 +37,12 @@
                         <div class="form-group row">
                             <label for="date_naissance" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>   
                             <div class="col-md-6">
+
+                                @if (auth::user()->date_naissance!==NULL)
                                 <input id="date_naissance" type="date" class="form-control form-control-user @error('date_naissance') is-invalid @enderror" name="date_naissance" placeholder="Votre date de naissance" value="{{ old('date_naissance') ?? auth::user()->date_naissance->format('Y-m-d') }}" autocomplete="date_naissance" autofocus>    
+                                @else
+                                <input id="date_naissance" type="date" class="form-control form-control-user @error('date_naissance') is-invalid @enderror" name="date_naissance" placeholder="Votre date de naissance" value="{{ old('date_naissance') ?? auth::user()->date_naissance }}" autocomplete="date_naissance" autofocus>    
+                                @endif
                                 @error('date_naissance')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

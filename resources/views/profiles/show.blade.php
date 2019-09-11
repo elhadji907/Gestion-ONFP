@@ -38,19 +38,20 @@
                     @if (auth::user()->sexe=='masculin')
 
                     <div class="mr-3"><b>né le</b></div>
-
-                    @else
-
-                    <div class="mr-3"><b>née le</b></div>
-
                     @endif
 
-                <div class="mr-3"><b>{{ auth::user()->date_naissance->format('d M Y')}}</b></div>
+                    @if (auth::user()->sexe=='féminin')
 
-                @elseif (auth::user()->lieu_naissance!==NULL)
+                    <div class="mr-3"><b>née le</b></div>   
+                    @endif                
+
+                    <div class="mr-3"><b>{{ auth::user()->date_naissance->format('d M Y')}}</b></div>
+
+                @if (auth::user()->lieu_naissance!==NULL)
 
                 <div class="mr-3"><b>à</b></div>
                 <div class="mr-3"><b>{{ auth::user()->lieu_naissance }}</b></div>
+                @endif
                 
                 @endif
                 

@@ -27,13 +27,15 @@ class ProfileController extends Controller
     {
         $this->authorize('update', $user->profile);
         $data = request()->validate([
-            'firstname'        =>  'required|string|max:50',
-            'name'             =>  'required|string|max:50',
-            'date_naissance'   =>  'required|date',
-            'lieu_naissance'   =>  'required|string|max:50',
-            'telephone'        =>  'required|string|max:50',
-            'sexe'             =>  'required|string|max:50',
-            'image'            =>  'sometimes|image|max:3000'
+            'firstname'        => ['required', 'string', 'max:50'],
+            'name'             => ['required', 'string', 'max:50'],
+            'username'         => ['string', 'min:5', 'max:10', 'unique:users'],
+            'email'            => ['string', 'email', 'max:255', 'unique:users'],
+            'date_naissance'   => ['required', 'date'],
+            'lieu_naissance'   => ['required', 'string', 'max:50'],
+            'telephone'        => ['required', 'string', 'max:50'],
+            'sexe'             => ['required', 'string', 'max:50'],
+            'image'            => ['sometimes', 'image', 'max:3000']
 
         ]);
 

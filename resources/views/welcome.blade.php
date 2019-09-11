@@ -41,12 +41,12 @@
         <img src="{{ asset('img/ONFP.png') }}" class="pr-3" width="50px" style="border-right: solid 1px #333; "/>
 
         <span class="pl-3">{{ config('app.name', 'ONFP') }}</span>
-    </a>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto align-items-baseline">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">A PROPOS</a>
           </li>
@@ -62,7 +62,14 @@
           @if (Route::has('login'))
           <li class="nav-item">
             @auth
-            <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}">ONFP</a>
+           {{--   <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}">Mon Compte
+              <img class="pt-1 rounded-circle" src="{{ asset(Auth::user()->profile->getImage()) }}" width="20" height="auto">
+            </a>  --}}
+
+            <a class="navbar-brand pl-3" href="{{ url('/home') }}">Mon Compte
+                <img src="{{ asset(Auth::user()->profile->getImage()) }}" class="rounded-circle" width="30px" height="auto"/>
+            </a>
+            
             @else
           </li>
           <li class="nav-item">
