@@ -32,8 +32,28 @@
             <div class="mt-3 d-flex">
                 <div class="mr-3"><b>{{ auth::user()->firstname }}</b></div>
                 <div class="mr-3"><b>{{ auth::user()->name }}</b></div>
-                <div class="mr-3"><b>Né(e) le {{ auth::user()->date_naissance }}</b></div>
-                <div class="mr-3"><b>à {{ auth::user()->lieu_naissance }}</b></div>
+
+                @if (auth::user()->date_naissance!==NULL)
+
+                    @if (auth::user()->sexe=='masculin')
+
+                    <div class="mr-3"><b>né le</b></div>
+
+                    @else
+
+                    <div class="mr-3"><b>née le</b></div>
+
+                    @endif
+
+                <div class="mr-3"><b>{{ auth::user()->date_naissance->format('d M Y')}}</b></div>
+
+                @elseif (auth::user()->lieu_naissance!==NULL)
+
+                <div class="mr-3"><b>à</b></div>
+                <div class="mr-3"><b>{{ auth::user()->lieu_naissance }}</b></div>
+                
+                @endif
+                
                {{--  <a href="{{ auth::user()->profile->url }}">{{ auth::user()->profile->url }}</a> --}}
                {{-- <div class="mr-3"><b>Pseudo:</b> {{ auth::user()->username }}</div> --}}
             </div>

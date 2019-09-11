@@ -75,6 +75,15 @@ class ProfileController extends Controller
 
         }  else {
             auth()->user()->profile->update($data);
+
+            auth()->user()->update([
+                'firstname' => $data['firstname'],
+                'name' => $data['name'],
+                'date_naissance' => $data['date_naissance'],
+                'lieu_naissance' => $data['lieu_naissance'],
+                'telephone' => $data['telephone'],
+                'sexe' => $data['sexe']
+                ]);
         }
 
         return redirect()->route('profiles.show', ['user'=>auth()->user()]);
