@@ -35,15 +35,7 @@
 
                 @if (auth::user()->date_naissance!==NULL)
 
-                    @if (auth::user()->sexe=='masculin')
-
-                    <div class="mr-3"><b>né le</b></div>
-                    @endif
-
-                    @if (auth::user()->sexe=='féminin')
-
-                    <div class="mr-3"><b>née le</b></div>   
-                    @endif                
+                    <div class="mr-3"><b>né(e) le</b></div>                                    
 
                     <div class="mr-3"><b>{{ auth::user()->date_naissance->format('d M Y')}}</b></div>
 
@@ -63,7 +55,7 @@
                 <div class="mr-3"><b>{{ __("Nom d'utilisateur") }}:</b> {{ auth::user()->username }}</div>
                 <div class="mr-3"><b>Adresse e-mail:</b> {{ auth::user()->email }}</div>
                 <div class="mr-3"><b>Téléphone:</b> {{ auth::user()->telephone }}</div>
-                <div class="mr-3"><b>Sexe:</b> {{ auth::user()->sexe }}</div>
+                <div class="mr-3"><b>Sexe:</b> {{ auth::user()->sex->name }}</div>
             </div>
         </div>
     </div>

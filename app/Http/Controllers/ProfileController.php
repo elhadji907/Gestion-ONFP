@@ -58,6 +58,8 @@ class ProfileController extends Controller
 
         return redirect()->route('profiles.show', ['user' => $user]); */
 
+
+
         if (request('image')) {   
         $imagePath = request('image')->store('avatars', 'public');
 
@@ -74,7 +76,7 @@ class ProfileController extends Controller
             'date_naissance' => $data['date_naissance'],
             'lieu_naissance' => $data['lieu_naissance'],
             'telephone' => $data['telephone'],
-            'sexe' => $data['sexe']
+            'sexes_id' => $data['sexe']
             ]);
 
         }  else {
@@ -86,7 +88,7 @@ class ProfileController extends Controller
                 'date_naissance' => $data['date_naissance'],
                 'lieu_naissance' => $data['lieu_naissance'],
                 'telephone' => $data['telephone'],
-                'sexe' => $data['sexe']
+                'sexes_id' => $data['sexe']
                 ]);
         }
 

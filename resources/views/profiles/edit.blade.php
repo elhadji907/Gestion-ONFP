@@ -97,7 +97,7 @@
                             <label for="sexe" class="col-md-4 col-form-label text-md-right">{{ __('Sexe') }}</label>   
                             <div class="col-md-6">
                                 <select name="sexe" id="sexe" class="form-control selectpicker">
-                                    <option value="" class="text-gray-600 small">--Sélectionner--</option>
+                                    <option class="text-gray-600 small">--Sélectionner--</option>
                                 @foreach($sexes as $sexe)
                                     <option value="{{ $sexe->id }}">{{ $sexe->name }}</option>
                                 @endforeach
