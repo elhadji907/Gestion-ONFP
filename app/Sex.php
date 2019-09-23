@@ -10,7 +10,7 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class TypesCourrier
+ * Class Sex
  * 
  * @property int $id
  * @property string $uuid
@@ -19,21 +19,22 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $courriers
+ * @property \Illuminate\Database\Eloquent\Collection $users
  *
  * @package App
  */
-class TypesCourrier extends Eloquent
+class Sex extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $fillable = [
 		'uuid',
 		'name'
 	];
 
-	public function courriers()
+	public function users()
 	{
-		return $this->hasMany(\App\Courrier::class, 'types_courriers_id');
+		return $this->hasMany(\App\User::class, 'sexes_id');
 	}
 }

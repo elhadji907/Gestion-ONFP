@@ -29,16 +29,18 @@ class CreateUsersTable extends Migration
             $table->string('username', 200)->nullable();
             $table->string('email', 200)->nullable();
             $table->string('telephone', 200)->nullable();
-            $table->string('sexe', 200)->nullable();
             $table->dateTime('date_naissance')->nullable();
             $table->string('lieu_naissance', 200)->nullable();
             $table->string('situation_familiale', 200)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->unsignedInteger('roles_id');
+            $table->unsignedInteger('sexes_id')->nullable();
             $table->rememberToken();
 
             $table->index(["roles_id"], 'fk_users_roles1_idx');
+
+            $table->index(["sexes_id"], 'fk_users_sexes1_idx');
 
             $table->unique(["email"], 'email_UNIQUE');
             $table->softDeletes();
@@ -47,6 +49,11 @@ class CreateUsersTable extends Migration
 
             $table->foreign('roles_id', 'fk_users_roles1_idx')
                 ->references('id')->on('roles')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('sexes_id', 'fk_users_sexes1_idx')
+                ->references('id')->on('sexes')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

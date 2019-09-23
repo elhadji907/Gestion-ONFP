@@ -2,15 +2,15 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 09 Sep 2019 13:12:02 +0000.
+ * Date: Wed, 11 Sep 2019 21:37:36 +0000.
  */
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * Class User
  * 
@@ -21,18 +21,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $username
  * @property string $email
  * @property string $telephone
- * @property string $sexe
  * @property \Carbon\Carbon $date_naissance
  * @property string $lieu_naissance
  * @property string $situation_familiale
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
  * @property int $roles_id
+ * @property int $sexes_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\Role $role
+ * @property \App\Sex $sex
  * @property \Illuminate\Database\Eloquent\Collection $administrateurs
  * @property \Illuminate\Database\Eloquent\Collection $courriers
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
@@ -44,13 +45,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+	
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;
 
-	protected $casts = [
-		'roles_id' => 'int',
-		'email_verified_at' => 'datetime',
-	];
 
 	protected static function boot(){
 		parent::boot();
@@ -62,6 +60,12 @@ class User extends Authenticatable
 			]);
 		});
 	} 
+
+
+	protected $casts = [
+		'roles_id' => 'int',
+		'sexes_id' => 'int'
+	];
 
 	protected $dates = [
 		'date_naissance',
@@ -79,15 +83,15 @@ class User extends Authenticatable
 		'username',
 		'email',
 		'telephone',
-		'sexe',
 		'date_naissance',
 		'lieu_naissance',
 		'situation_familiale',
 		'email_verified_at',
 		'password',
-		'roles_id'
+		'roles_id',
+		'sexes_id'
 	];
-
+	
 	public function getRouteKeyName(){
 		return 'username';
 	}
@@ -96,6 +100,11 @@ class User extends Authenticatable
 	public function role()
 	{
 		return $this->belongsTo(\App\Role::class, 'roles_id');
+	}
+
+	public function sex()
+	{
+		return $this->belongsTo(\App\Sex::class, 'sexes_id');
 	}
 
 	public function administrateur()

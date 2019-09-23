@@ -900,3 +900,13 @@ $factory->define(App\TypesCourrier::class, function (Faker $faker) {
         'name' => $faker->name,
     ];
 });
+/* @var $factory \Illuminate\Database\Eloquent\Factory */
+
+// use Faker\Generator as Faker;
+
+$factory->define(App\Sex::class, function (Faker\Generator $faker) {
+    return [
+        // 'uuid' => $faker->uuid,
+        'name' => $faker->name,
+    ];
+});

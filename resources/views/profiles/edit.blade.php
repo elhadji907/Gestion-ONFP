@@ -96,7 +96,12 @@
                         <div class="form-group row">
                             <label for="sexe" class="col-md-4 col-form-label text-md-right">{{ __('Sexe') }}</label>   
                             <div class="col-md-6">
-                                <input id="sexe" type="sexe" class="form-control form-control-user @error('sexe') is-invalid @enderror" name="sexe" placeholder="Votre lieu de naissance" value="{{ old('sexe') ?? auth::user()->sexe }}" autocomplete="sexe" autofocus>    
+                                <select name="sexe" id="sexe" class="form-control selectpicker">
+                                    <option value="" class="text-gray-600 small">--Sélectionner--</option>
+                                @foreach($sexes as $sexe)
+                                    <option value="{{ $sexe->id }}">{{ $sexe->name }}</option>
+                                @endforeach
+                                </select>
                                 @error('sexe')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use App\Sex;
 
 class ProfileController extends Controller
 {
@@ -17,9 +18,10 @@ class ProfileController extends Controller
 
     public function edit(User $user)
     {
-        //dd($user);        
+        //dd($user);      
+        $sexes = Sex::get();  
         $this->authorize('update', $user->profile);
-        return view('profiles.edit', compact('user'));
+        return view('profiles.edit', compact('user','sexes'));
     }
 
 
