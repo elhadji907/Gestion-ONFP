@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 }); */
 
 $factory->define(App\Administrateur::class, function (Faker\Generator $faker) {
-    $role_id=App\Role::where('name','Administrateur')->first()->id;
+    $role_id = App\Role::where('name','Administrateur')->first()->id;
     return [
         'matricule' => "ADMIN".$faker->word,
         'users_id' => function () use($role_id) {
@@ -403,7 +403,7 @@ $factory->define(App\Convention::class, function (Faker $faker) {
 
 // use Faker\Generator as Faker;
 
-$factory->define(App\Courrier::class, function (Faker $faker) {
+$factory->define(App\Courrier::class,  function (Faker\Generator $faker) {
     return [
         // 'uuid' => $faker->uuid,
         'numero' => $faker->word,
@@ -867,7 +867,7 @@ $factory->define(App\Ville::class, function (Faker $faker) {
 
 // /* use Faker\Generator as Faker; */
 
-$factory->define(App\Arrive::class, function (Faker $faker) {
+$factory->define(App\Arrive::class, function (Faker\Generator $faker) {
     return [
         // 'uuid' => $faker->uuid,
         'name' => $faker->name,

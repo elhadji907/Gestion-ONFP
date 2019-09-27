@@ -10,7 +10,7 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Arrife
+ * Class v
  * 
  * @property int $id
  * @property string $uuid
@@ -24,7 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App
  */
-class Arrife extends Eloquent
+class Arrive extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;

@@ -27,6 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Depart extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'courriers_id' => 'int'
