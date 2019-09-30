@@ -75,8 +75,8 @@ class ProfileController extends Controller
             'name' => $data['name'],
             'date_naissance' => $data['date_naissance'],
             'lieu_naissance' => $data['lieu_naissance'],
-            'telephone' => $data['telephone'],
-            'sexes_id' => $data['sexe']
+            'telephone' => $data['telephone']
+            // 'sexes_id' => $data['sexe']
             ]);
 
         }  else {
@@ -87,8 +87,8 @@ class ProfileController extends Controller
                 'name' => $data['name'],
                 'date_naissance' => $data['date_naissance'],
                 'lieu_naissance' => $data['lieu_naissance'],
-                'telephone' => $data['telephone'],
-                'sexes_id' => $data['sexe']
+                'telephone' => $data['telephone']
+                // 'sexes_id' => $data['sexe']
                 ]);
         }
 
