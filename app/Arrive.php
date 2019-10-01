@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 11 Sep 2019 21:37:36 +0000.
+ * Date: Tue, 01 Oct 2019 14:09:34 +0000.
  */
 
 namespace App;
@@ -10,7 +10,7 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class v
+ * Class Arrife
  * 
  * @property int $id
  * @property string $uuid

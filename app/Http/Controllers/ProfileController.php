@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use App\Sex;
 
 class ProfileController extends Controller
 {
@@ -19,9 +18,8 @@ class ProfileController extends Controller
     public function edit(User $user)
     {
         //dd($user);      
-        $sexes = Sex::get();  
         $this->authorize('update', $user->profile);
-        return view('profiles.edit', compact('user','sexes'));
+        return view('profiles.edit', compact('user'));
     }
 
 
@@ -36,7 +34,6 @@ class ProfileController extends Controller
             'date_naissance'   => ['required', 'date'],
             'lieu_naissance'   => ['required', 'string', 'max:50'],
             'telephone'        => ['required', 'string', 'max:50'],
-            'sexe'             => ['required', 'string', 'max:50'],
             'image'            => ['sometimes', 'image', 'max:3000']
 
         ]);
@@ -76,7 +73,6 @@ class ProfileController extends Controller
             'date_naissance' => $data['date_naissance'],
             'lieu_naissance' => $data['lieu_naissance'],
             'telephone' => $data['telephone']
-            // 'sexes_id' => $data['sexe']
             ]);
 
         }  else {
@@ -88,7 +84,6 @@ class ProfileController extends Controller
                 'date_naissance' => $data['date_naissance'],
                 'lieu_naissance' => $data['lieu_naissance'],
                 'telephone' => $data['telephone']
-                // 'sexes_id' => $data['sexe']
                 ]);
         }
 

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 11 Sep 2019 21:37:36 +0000.
+ * Date: Tue, 01 Oct 2019 14:09:34 +0000.
  */
 
 namespace App;
@@ -11,11 +11,13 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  * Class User
  * 
  * @property int $id
  * @property string $uuid
+ * @property string $civilite
  * @property string $firstname
  * @property string $name
  * @property string $username
@@ -27,13 +29,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
  * @property int $roles_id
- * @property int $sexes_id
+ * @property string $remember_token
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \App\Role $role
- * @property \App\Sex $sex
  * @property \Illuminate\Database\Eloquent\Collection $administrateurs
  * @property \Illuminate\Database\Eloquent\Collection $courriers
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
@@ -45,10 +46,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-	
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	use \App\Helpers\UuidForKey;
-
 
 	protected static function boot(){
 		parent::boot();
@@ -61,10 +60,8 @@ class User extends Authenticatable
 		});
 	} 
 
-
 	protected $casts = [
-		'roles_id' => 'int',
-		'sexes_id' => 'int'
+		'roles_id' => 'int'
 	];
 
 	protected $dates = [
@@ -73,11 +70,13 @@ class User extends Authenticatable
 	];
 
 	protected $hidden = [
-		'password'
+		'password',
+		'remember_token'
 	];
 
 	protected $fillable = [
 		'uuid',
+		'civilite',
 		'firstname',
 		'name',
 		'username',
@@ -89,22 +88,16 @@ class User extends Authenticatable
 		'email_verified_at',
 		'password',
 		'roles_id',
-		'sexes_id'
+		'remember_token'
 	];
-	
+
 	public function getRouteKeyName(){
 		return 'username';
 	}
 
-
 	public function role()
 	{
 		return $this->belongsTo(\App\Role::class, 'roles_id');
-	}
-
-	public function sex()
-	{
-		return $this->belongsTo(\App\Sex::class, 'sexes_id');
 	}
 
 	public function administrateur()

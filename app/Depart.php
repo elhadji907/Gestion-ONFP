@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 11 Sep 2019 21:37:36 +0000.
+ * Date: Tue, 01 Oct 2019 14:09:34 +0000.
  */
 
 namespace App;
@@ -27,7 +27,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Depart extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
-	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'courriers_id' => 'int'

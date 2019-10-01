@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
+            $table->string('civilite', 200)->nullable();
             $table->string('firstname', 200)->nullable();
             $table->string('name', 200)->nullable();
             $table->string('username', 200)->nullable();
@@ -35,12 +36,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->unsignedInteger('roles_id');
-            $table->unsignedInteger('sexes_id')->nullable();
             $table->rememberToken();
 
             $table->index(["roles_id"], 'fk_users_roles1_idx');
-
-            $table->index(["sexes_id"], 'fk_users_sexes1_idx');
 
             $table->unique(["email"], 'email_UNIQUE');
             $table->softDeletes();
@@ -49,11 +47,6 @@ class CreateUsersTable extends Migration
 
             $table->foreign('roles_id', 'fk_users_roles1_idx')
                 ->references('id')->on('roles')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('sexes_id', 'fk_users_sexes1_idx')
-                ->references('id')->on('sexes')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

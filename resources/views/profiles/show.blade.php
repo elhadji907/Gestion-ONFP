@@ -55,7 +55,6 @@
                 <div class="mr-3"><b>{{ __("Nom d'utilisateur") }}:</b> {{ auth::user()->username }}</div>
                 <div class="mr-3"><b>Adresse e-mail:</b> {{ auth::user()->email }}</div>
                 <div class="mr-3"><b>Téléphone:</b> {{ auth::user()->telephone }}</div>
-               {{--   <div class="mr-3"><b>Sexe:</b> {{ auth::user()->sex->name }}</div>  --}}
             </div>
         </div>
     </div>
