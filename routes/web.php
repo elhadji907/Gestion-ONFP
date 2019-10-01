@@ -28,6 +28,7 @@ Route::get('/accueil', function () {
 Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
 Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
+Route::get('/administrateurs/list', 'AdministrateursController@list')->name('administrateurs.list');
 
 Route::get('courriers', 'CourriersController@show')->name('courriers.show');
 Route::get('courriers/arrives', 'ArrivesController@create')->name('arrives.create');
@@ -35,6 +36,10 @@ Route::get('courriers/arrives', 'ArrivesController@create')->name('arrives.creat
 Route::get('postes/create', 'PostesController@create')->name('postes.create');
 Route::post('postes', 'PostesController@store')->name('postes.store');
 Route::get('postes/{poste}', 'PostesController@show')->name('postes.show');
+
+
+
+Route::resource('/administrateurs', 'AdministrateursController');
 
 
 

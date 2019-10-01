@@ -88,7 +88,7 @@
 <!-- Nav Item - Pages Collapse Menu -->
 
 <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{ route('administrateurs.index') }}">
         <span data-feather="layers"></span>
       <span>Administrer les utilisateurs</span>
     </a>

@@ -38,14 +38,5 @@
     {{-- <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/4/tinymce.min.js' referrerpolicy="origin"></script> --}}
     <script src="/path/to/tinymce.min.js"></script>
 
-<script>
-tinymce.init({
-  selector: '#textarea',
-  language: 'fr_FR',
-  plugins: 'link'
-});
-</script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+@stack('scripts')
