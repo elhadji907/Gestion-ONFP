@@ -18,7 +18,7 @@ class AdministrateursController extends Controller
      */
     public function index()
     {
-        //
+        return view('administrateurs.index');
     }
 
     /**
@@ -28,7 +28,8 @@ class AdministrateursController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::get();
+        return view('administrateurs.create',compact('roles'));
     }
 
     /**
@@ -39,7 +40,43 @@ class AdministrateursController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request, [
+                'matricule'     =>  'required|string|max:50',
+                'prenom'        =>  'required|string|max:50',
+                'nom'           =>  'required|string|max:50',
+                'telephone'     =>  'required|string|max:50',
+                'email'         =>  'required|email|max:255|unique:users,email',
+                'password'      =>  'required|confirmed|string|min:8|max:50',
+            ],
+            [
+                'password.min'  =>  'Pour des raisons de sécurité, votre mot de passe doit faire au moins :min caractères.'
+            ],
+            [
+                'password.max'  =>  'Pour des raisons de sécurité, votre mot de passe ne doit pas dépasser :max caractères.'
+            ]
+        );
+
+        $roles_id = Role::where('name','Administrateur')->first()->id;
+        $utilisateur = new User([            
+            'firstname'      =>      $request->input('prenom'),
+            'name'           =>      $request->input('nom'),
+            'email'          =>      $request->input('email'),
+            'telephone'      =>      $request->input('telephone'),
+            'password'       =>      Hash::make($request->input('password')),
+            'roles_id'       =>      $roles_id
+
+        ]);
+        
+        $utilisateur->save();
+        
+        $administrateur = new Administrateur([
+            'matricule'     =>     $request->input('matricule'),
+            'users_id'      =>     $utilisateur->id
+        ]);
+
+        $administrateur->save();
+        return redirect()->route('administrateurs.index')->with('success','utilisateur ajoutée avec succès !');
     }
 
     /**
@@ -59,9 +96,14 @@ class AdministrateursController extends Controller
      * @param  \App\Administrateur  $administrateur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Administrateur $administrateur)
+    public function edit($id)
     {
-        //
+        
+        $administrateur = Administrateur::find($id);
+        $utilisateur=$administrateur->user;        
+        $roles = Role::get();
+        //return $utilisateur;
+        return view('administrateurs.update', compact('administrateur','utilisateur','id','roles'));
     }
 
     /**
@@ -73,7 +115,36 @@ class AdministrateursController extends Controller
      */
     public function update(Request $request, Administrateur $administrateur)
     {
-        //
+        $this->validate(
+            $request, 
+            [
+                'matricule'     => 'required|string|max:50',
+                'prenom'        => 'required|string|max:100',
+                'nom'           => 'required|string|max:50',
+                'telephone'     => 'required|string|max:50',
+                'choixrole'     => 'required|string',
+            ]);
+
+        $administrateur = Administrateur::find($id);
+        $utilisateur=$administrateur->user;
+
+       /*  $roles_id = Role::where('name','Administrateur')->first()->id; */
+
+
+        $utilisateur->firstname      =      $request->input('prenom');
+        $utilisateur->name           =      $request->input('nom');
+        $utilisateur->telephone      =      $request->input('telephone');
+       /*  $utilisateur->roles_id       =      $roles_id; */
+       $utilisateur->roles_id        =      $request->input('choixrole');
+
+        $utilisateur->save();
+
+        $administrateur->matricule   =     $request->input('matricule');
+        $administrateur->users_id    =     $utilisateur->id;
+
+        $administrateur->save();
+        
+        return redirect()->route('administrateurs.index')->with('success','utilisateur modifié avec succès !');
     }
 
     /**
@@ -84,6 +155,14 @@ class AdministrateursController extends Controller
      */
     public function destroy(Administrateur $administrateur)
     {
-        //
+        $administrateur->delete();
+        $message = $administrateur->user->firstname.' '.$administrateur->user->name.' a été supprimé(e)';
+        return redirect()->route('administrateurs.index')->with(compact('message'));
+    }
+
+    public function list(Request $request)
+    {
+        $administrateurs=Administrateur::with('user')->orderBy('created_at', 'desc')->get();
+        return Datatables::of($administrateurs)->make(true);
     }
 }
