@@ -61,7 +61,8 @@
                                     @endforeach
                                     @endif
                                 </small>
-                            </div>  
+                            </div> 
+                    {{--  
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Choisir un role:</b></label>
                                 <select name="choixrole" id="choixrole" class="form-control">
@@ -77,7 +78,8 @@
                                     @endforeach
                                     @endif
                                 </small>
-                            </div>                        
+                            </div>
+                      --}}
                             <button type="submit" class="btn btn-primary"><i class="far fa-paper-plane"></i>&nbsp;Enregistrer</button>
                         </form>
                         <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

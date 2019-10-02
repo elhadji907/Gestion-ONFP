@@ -121,8 +121,8 @@ class AdministrateursController extends Controller
                 'matricule'     => 'required|string|max:50',
                 'prenom'        => 'required|string|max:100',
                 'nom'           => 'required|string|max:50',
-                'telephone'     => 'required|string|max:50',
-                'choixrole'     => 'required|string',
+                'telephone'     => 'required|string|max:50'
+                // 'choixrole'     => 'required|string',
             ]);
 
         $administrateur = Administrateur::find($id);
@@ -135,7 +135,7 @@ class AdministrateursController extends Controller
         $utilisateur->name           =      $request->input('nom');
         $utilisateur->telephone      =      $request->input('telephone');
        /*  $utilisateur->roles_id       =      $roles_id; */
-       $utilisateur->roles_id        =      $request->input('choixrole');
+    //    $utilisateur->roles_id        =      $request->input('choixrole');
 
         $utilisateur->save();
 

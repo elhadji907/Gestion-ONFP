@@ -350,6 +350,7 @@ $factory->define(App\Type::class, function (Faker $faker) {
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
+        'civilite' => SnmG::getCivilite(),
         'firstname' => SnmG::getFirstName(),
         'name' => SnmG::getName(),
         'username' => Str::random(7),
@@ -904,9 +905,9 @@ $factory->define(App\TypesCourrier::class, function (Faker $faker) {
 
 // use Faker\Generator as Faker;
 
-$factory->define(App\Sex::class, function (Faker\Generator $faker) {
+/* $factory->define(App\Sex::class, function (Faker\Generator $faker) {
     return [
         // 'uuid' => $faker->uuid,
         'name' => $faker->name,
     ];
-});
+}); */

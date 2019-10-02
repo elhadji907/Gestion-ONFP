@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layout.default')
 @section('content')
 <div class="content">
     <div class="container col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
