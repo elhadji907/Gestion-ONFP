@@ -138,6 +138,7 @@
       <a class="collapse-item" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
       @endif
       @else
+    {{--        
       <h6 class="collapse-header">DIRECTIONS</h6>
       <a class="collapse-item" href="#">DIOF</a>
       <a class="collapse-item" href="#">DEC</a>
@@ -157,7 +158,8 @@
       <a class="collapse-item" href="#">KAOLACK</a>
       <a class="collapse-item" href="#">SAINT-LOUIS</a>
       <a class="collapse-item" href="#">KEDOUGOU</a>
-      <a class="collapse-item" href="#">MATAM</a>
+      <a class="collapse-item" href="#">MATAM</a>  
+      --}}
 
       {{-- 
       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>

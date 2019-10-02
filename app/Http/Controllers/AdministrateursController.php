@@ -113,7 +113,7 @@ class AdministrateursController extends Controller
      * @param  \App\Administrateur  $administrateur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrateur $administrateur)
+    public function update(Request $request, $id)
     {
         $this->validate(
             $request, 
