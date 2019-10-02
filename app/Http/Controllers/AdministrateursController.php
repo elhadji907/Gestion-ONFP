@@ -44,7 +44,7 @@ class AdministrateursController extends Controller
         $this->validate(
             $request, [
                 'civilite'     =>  'required|string|max:10',
-                'matricule'     =>  'required|string|max:50|unique:administrateurs,matricule',
+                'matricule'     =>  'required|string|max:50',
                 'prenom'        =>  'required|string|max:50',
                 'nom'           =>  'required|string|max:50',
                 'telephone'     =>  'required|string|max:50',
@@ -105,8 +105,9 @@ class AdministrateursController extends Controller
         $administrateur = Administrateur::find($id);
         $utilisateur=$administrateur->user;        
         $roles = Role::get();
+        $civilites = User::select('civilite')->distinct()->get();
         //return $utilisateur;
-        return view('administrateurs.update', compact('administrateur','utilisateur','id','roles'));
+        return view('administrateurs.update', compact('administrateur','utilisateur','id','roles','civilites'));
     }
 
     /**
@@ -122,7 +123,7 @@ class AdministrateursController extends Controller
             $request, 
             [
                 'civilite'     => 'required|string|max:10',
-                'matricule'     =>  'required|string|max:50|unique:administrateurs,matricule',
+                'matricule'     =>  'required|string|max:50',
                 'prenom'        => 'required|string|max:100',
                 'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50'
@@ -135,6 +136,7 @@ class AdministrateursController extends Controller
        /*  $roles_id = Role::where('name','Administrateur')->first()->id; */
 
 
+       $utilisateur->civilite      =        $request->input('civilite');
         $utilisateur->firstname      =      $request->input('prenom');
         $utilisateur->name           =      $request->input('nom');
         $utilisateur->telephone      =      $request->input('telephone');
@@ -166,7 +168,7 @@ class AdministrateursController extends Controller
 
     public function list(Request $request)
     {
-        $administrateurs=Administrateur::with('user')->orderBy('created_at', 'desc')->get();
+        $administrateurs=Administrateur::with('user')->orderBy('created_at', 'asc')->get();
         return Datatables::of($administrateurs)->make(true);
     }
 }
