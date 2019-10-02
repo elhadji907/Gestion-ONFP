@@ -29,7 +29,8 @@ class AdministrateursController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('administrateurs.create',compact('roles'));
+        $civilites = User::select('civilite')->distinct()->get();
+        return view('administrateurs.create',compact('roles', 'civilites'));
     }
 
     /**
@@ -42,7 +43,8 @@ class AdministrateursController extends Controller
     {
         $this->validate(
             $request, [
-                'matricule'     =>  'required|string|max:50',
+                'civilite'     =>  'required|string|max:10',
+                'matricule'     =>  'required|string|max:50|unique:administrateurs,matricule',
                 'prenom'        =>  'required|string|max:50',
                 'nom'           =>  'required|string|max:50',
                 'telephone'     =>  'required|string|max:50',
@@ -58,7 +60,8 @@ class AdministrateursController extends Controller
         );
 
         $roles_id = Role::where('name','Administrateur')->first()->id;
-        $utilisateur = new User([            
+        $utilisateur = new User([      
+            'civilite'      =>      $request->input('civilite'),      
             'firstname'      =>      $request->input('prenom'),
             'name'           =>      $request->input('nom'),
             'email'          =>      $request->input('email'),
@@ -118,7 +121,8 @@ class AdministrateursController extends Controller
         $this->validate(
             $request, 
             [
-                'matricule'     => 'required|string|max:50',
+                'civilite'     => 'required|string|max:10',
+                'matricule'     =>  'required|string|max:50|unique:administrateurs,matricule',
                 'prenom'        => 'required|string|max:100',
                 'nom'           => 'required|string|max:50',
                 'telephone'     => 'required|string|max:50'

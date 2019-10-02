@@ -25,7 +25,7 @@
                         <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-administrateurs">
                           <thead class="table-dark">
                             <tr>
-                              <th>ID</th>
+                              <th>Civilité</th>
                               <th>Matricule</th>
                               <th>Prenom</th>
                               <th>Nom</th>
@@ -36,7 +36,7 @@
                           </thead>
                           <tfoot class="table-dark">
                               <tr>
-                                <th>ID</th>
+                                <th>Civilité</th>
                                 <th>Matricule</th>
                                 <th>Prenom</th>
                                 <th>Nom</th>
@@ -89,7 +89,7 @@
             "serverSide": true,
             "ajax": "{{route('administrateurs.list')}}",
             columns: [
-                    { data: 'id', name: 'id' },
+                    { data: 'user.civilite', name: 'user.civilite' },
                     { data: 'matricule', name: 'matricule' },
                     { data: 'user.firstname', name: 'user.firstname' },
                     { data: 'user.name', name: 'user.name' },
