@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 01 Sep 2019 00:00:38 +0000.
+ * Date: Thu, 03 Oct 2019 11:32:17 +0000.
  */
 
 namespace App;
@@ -10,39 +10,36 @@ namespace App;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Village
+ * Class Recue
  * 
  * @property int $id
  * @property string $uuid
- * @property string $nom
- * @property int $chef_id
- * @property int $communes_id
+ * @property string $objet
+ * @property int $courriers_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \App\Commune $commune
+ * @property \App\Courrier $courrier
  *
  * @package App
  */
-class Village extends Eloquent
+class Recue extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'chef_id' => 'int',
-		'communes_id' => 'int'
+		'courriers_id' => 'int'
 	];
 
 	protected $fillable = [
 		'uuid',
-		'nom',
-		'chef_id',
-		'communes_id'
+		'objet',
+		'courriers_id'
 	];
 
-	public function commune()
+	public function courrier()
 	{
-		return $this->belongsTo(\App\Commune::class, 'communes_id');
+		return $this->belongsTo(\App\Courrier::class, 'courriers_id');
 	}
 }

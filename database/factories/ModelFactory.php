@@ -477,9 +477,10 @@ $factory->define(App\Antenne::class, function (Faker $faker) {
 
 // use Faker\Generator as Faker;
 
-$factory->define(App\Arrife::class, function (Faker $faker) {
+$factory->define(App\Arrive::class, function (Faker $faker) {
     return [
         // 'uuid' => $faker->uuid,
+        'objet' => $faker->word,
         'courriers_id' => function () {
             return factory(App\Courrier::class)->create()->id;
         },
@@ -868,7 +869,7 @@ $factory->define(App\Ville::class, function (Faker $faker) {
 
 // /* use Faker\Generator as Faker; */
 
-$factory->define(App\Arrive::class, function (Faker\Generator $faker) {
+/* $factory->define(App\Arrive::class, function (Faker\Generator $faker) {
     return [
         // 'uuid' => $faker->uuid,
         'name' => $faker->name,
@@ -876,7 +877,7 @@ $factory->define(App\Arrive::class, function (Faker\Generator $faker) {
             return factory(App\Courrier::class)->create()->id;
         },
     ];
-});
+}); */
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 // /* use Faker\Generator as Faker; */

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 01 Oct 2019 14:09:34 +0000.
+ * Date: Thu, 03 Oct 2019 11:32:17 +0000.
  */
 
 namespace App;
@@ -26,6 +26,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Role extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $fillable = [
 		'uuid',

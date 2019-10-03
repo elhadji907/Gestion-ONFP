@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 01 Oct 2019 14:09:34 +0000.
+ * Date: Thu, 03 Oct 2019 11:32:17 +0000.
  */
 
 namespace App;
@@ -23,7 +23,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $statut
  * @property \Carbon\Carbon $date
  * @property int $gestionnaires_id
- * @property int $users_id
  * @property int $types_courriers_id
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
@@ -31,20 +30,19 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \App\Gestionnaire $gestionnaire
  * @property \App\TypesCourrier $types_courrier
- * @property \App\User $user
- * @property \Illuminate\Database\Eloquent\Collection $arrives
  * @property \Illuminate\Database\Eloquent\Collection $departs
  * @property \Illuminate\Database\Eloquent\Collection $internes
+ * @property \Illuminate\Database\Eloquent\Collection $recues
  *
  * @package App
  */
 class Courrier extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
 
 	protected $casts = [
 		'gestionnaires_id' => 'int',
-		'users_id' => 'int',
 		'types_courriers_id' => 'int'
 	];
 
@@ -63,7 +61,6 @@ class Courrier extends Eloquent
 		'statut',
 		'date',
 		'gestionnaires_id',
-		'users_id',
 		'types_courriers_id'
 	];
 
@@ -77,16 +74,6 @@ class Courrier extends Eloquent
 		return $this->belongsTo(\App\TypesCourrier::class, 'types_courriers_id');
 	}
 
-	public function user()
-	{
-		return $this->belongsTo(\App\User::class, 'users_id');
-	}
-
-	public function arrives()
-	{
-		return $this->hasMany(\App\Arrife::class, 'courriers_id');
-	}
-
 	public function departs()
 	{
 		return $this->hasMany(\App\Depart::class, 'courriers_id');
@@ -95,5 +82,10 @@ class Courrier extends Eloquent
 	public function internes()
 	{
 		return $this->hasMany(\App\Interne::class, 'courriers_id');
+	}
+
+	public function recues()
+	{
+		return $this->hasMany(\App\Recue::class, 'courriers_id');
 	}
 }

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 01 Oct 2019 14:09:34 +0000.
+ * Date: Thu, 03 Oct 2019 11:32:17 +0000.
  */
 
 namespace App;
@@ -36,7 +36,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * 
  * @property \App\Role $role
  * @property \Illuminate\Database\Eloquent\Collection $administrateurs
- * @property \Illuminate\Database\Eloquent\Collection $courriers
  * @property \Illuminate\Database\Eloquent\Collection $gestionnaires
  * @property \Illuminate\Database\Eloquent\Collection $pays
  * @property \Illuminate\Database\Eloquent\Collection $postes
@@ -91,10 +90,6 @@ class User extends Authenticatable
 		'remember_token'
 	];
 
-	public function getRouteKeyName(){
-		return 'username';
-	}
-
 	public function role()
 	{
 		return $this->belongsTo(\App\Role::class, 'roles_id');
@@ -103,11 +98,6 @@ class User extends Authenticatable
 	public function administrateur()
 	{
 		return $this->hasOne(\App\Administrateur::class, 'users_id');
-	}
-
-	public function courrier()
-	{
-		return $this->hasOne(\App\Courrier::class, 'users_id');
 	}
 
 	public function gestionnaire()
